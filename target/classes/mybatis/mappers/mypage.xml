@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="mapper.mypage">
+	<!-- 내정보 -->
+	<select id="selectMyDetailInfo" resultType="memberVO"
+		parameterType="String">
+	    <![CDATA[
+			select * from t_shop_member 
+			where member_id=#{member_id}
+    	]]>
+	</select>
+
+
+	<!-- 내 정보 수정 -->
+	<update id="updateMyInfo" parameterType="java.util.HashMap">
+		update t_shop_member
+		set
+		member_pwd=#{member_pwd},
+		member_name=#{member_name},
+		hp1=#{hp1},
+		zipcode=#{zipcode},
+		address=#{address},
+		subAddress=#{subAddress}
+		where
+		member_id=#{member_id}
+	</update>
+
+
+	<!-- 회원탈퇴 -->
+	<delete id="deleteMember" parameterType="String">
+	    <![CDATA[
+			delete t_shop_member
+			where member_id = #{member_id}
+    	]]>
+	</delete>
+</mapper>
