@@ -3,7 +3,57 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script>
+	<div id="memInfo">
+		<h2>내정보</h2>
+		<form name="mod_member" method="post">
+			<table>
+				<!-- 아이디 -->
+				<tr>
+					<td>아이디</td>
+					<td><input type="text" name="member_id" value="${memberInfo.member_id }" disabled></td>
+				</tr>
+				<!-- 이름 -->
+				<tr>
+					<td>이름</td>
+					<td><input type="text" name="member_name" value="${memberInfo.member_name }"></td>
+				</tr>
+				<!-- 비밀번호 -->
+				<tr>
+					<td>비밀번호</td>
+					<td><input type="password" name="member_pwd" value="${memberInfo.member_pwd }"></td>
+				</tr>
+				<!-- 휴대폰번호 -->
+				<tr>
+					<td>휴대폰번호</td>
+					<td><input type="text" name="hp1" value="${memberInfo.hp1 }"></td>
+				</tr>
+				
+				<tr>
+					<td>배송지</td>
+					<td>
+						<div>
+							<!-- 우편번호  -->
+							<input type="text" placeholder="우편번호" id="zipcode" name="zipcode"
+							value="${memberInfo.zipcode }">
+							<!-- 다음 우편번호 검색 -->
+							<a href="javascript:execDaumPostcode()">우편번호검색</a>
+						</div>
+						<!-- 주소 -->
+						<input type="text" id="address" placeholder="주소" name="address" value="${memberInfo.address }" size="50">
+						<input type="text" id="subAddress" name="subAddress" value="${memberInfo.subAddress }" size="50">
+					</td>
+				</tr>
+				
+			</table>
+			
+			<button onclick="fn_modify_member_info()">수정하기</button>
+			<button onclick="location.reload()">취소하기</button>
+			<button onclick="fn_delete_member('${memberInfo.member_id}', 'Y')">탈퇴하기</button>
+			
+		</form>
+	</div>
+	
+	<script>
 	//다음 주소 찾기
 	function execDaumPostcode() {
 		new daum.Postcode({
@@ -14,8 +64,6 @@
 			}
 		}).open();
 	}
-	
-	
 // 	회원정보 수정
 	function fn_modify_member_info() {
 		let mod_member = document.mod_member.value;
@@ -86,57 +134,7 @@
 			});
 		}
 	}
-
+	
 
 	</script>
-<body>
-	<div id="memInfo">
-		<h2>내정보</h2>
-		<form name="mod_member" method="post">
-			<table>
-				<!-- 아이디 -->
-				<tr>
-					<td>아이디</td>
-					<td><input type="text" name="member_id" value="${memberInfo.member_id }" disabled></td>
-				</tr>
-				<!-- 이름 -->
-				<tr>
-					<td>이름</td>
-					<td><input type="text" name="member_name" value="${memberInfo.member_name }"></td>
-				</tr>
-				<!-- 비밀번호 -->
-				<tr>
-					<td>비밀번호</td>
-					<td><input type="password" name="member_pwd" value="${memberInfo.member_pwd }"></td>
-				</tr>
-				<!-- 휴대폰번호 -->
-				<tr>
-					<td>휴대폰번호</td>
-					<td><input type="text" name="hp1" value="${memberInfo.hp1 }"></td>
-				</tr>
-				
-				<tr>
-					<td>배송지</td>
-					<td>
-						<div>
-							<!-- 우편번호  -->
-							<input type="text" placeholder="우편번호" id="zipcode" name="zipcode"
-							value="${memberInfo.zipcode }">
-							<!-- 다음 우편번호 검색 -->
-							<a href="javascript:execDaumPostcode()">우편번호검색</a>
-						</div>
-						<!-- 주소 -->
-						<input type="text" id="address" placeholder="주소" name="address" value="${memberInfo.address }" size="50">
-						<input type="text" id="subAddress" name="subAddress" value="${memberInfo.subAddress }" size="50">
-					</td>
-				</tr>
-				
-			</table>
-			
-			<button onclick="fn_modify_member_info()">수정하기</button>
-			<button onclick="location.reload()">취소하기</button>
-			<button onclick="fn_delete_member('${memberInfo.member_id}', 'Y')">탈퇴하기</button>
-			
-		</form>
-	</div>
-	
+

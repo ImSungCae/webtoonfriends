@@ -11,6 +11,7 @@
 <head>
 <meta charset="UTF-8">
 <title><tiles:insertAttribute name="title" /></title>
+<script defer src="${contextPath }/resources/js/main.js" type="text/javascript"></script>
 <link href="${contextPath}/resources/css/main.css" rel="stylesheet" type="text/css" >
 <script src="https://kit.fontawesome.com/c80b274b94.js" crossorigin="anonymous"></script>
 <script src="${contextPath}/resources/js/jquery-1.6.2.min.js" type="text/javascript"></script>

@@ -1,4 +1,22 @@
-// E스포츠 섹션 슬라이스 이벤트
+// 헤더바 스크롤 이벤트
+const head = document.querySelector('#head');
+
+let tabIdx = 0;
+let scrPos = { y: 0, dy: 0, state: true };
+
+window.addEventListener('scroll', () => {
+    scrPos.y = window.scrollY;
+    scrPos.state = (scrPos.y > scrPos.dy) ? true : false;
+    scrPos.dy = scrPos.y;
+
+    if (scrPos.state) {
+        head.classList.add('active');
+    } else {
+        head.classList.remove('active');
+    }
+});
+
+// 메인 슬라이드 이벤트
 const article =  document.querySelector('article'),
 	slide = article.querySelector('#slide'), 
 	slide_container = slide.querySelector('ul'),
@@ -55,8 +73,7 @@ function moveSlide() {
 
 slide.addEventListener('click', function (e) {
     const aLink = e.target.closest('a');
-    e.preventDefault();
-
+    
     if (exec() && slide.contains(aLink)) {
         const extractDirection = +aLink.dataset.direction;
         nextIdx = idx + extractDirection;
@@ -80,3 +97,6 @@ slide.addEventListener('click', function (e) {
 
     }
 });
+
+
+
