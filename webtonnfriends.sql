@@ -60,9 +60,28 @@ CREATE TABLE t_shop_cart(
 );
 
 --------------------------------------------------------
+-- create t_shop_order
+--------------------------------------------------------
 
-
-
+CREATE TABLE t_shop_order(
+    order_seq_num NUMBER(20) primary key,
+    order_id NUMBER(20),
+    goods_id NUMBER(20),
+    goods_title VARCHAR2(100),
+    goods_price NUMBER(5),
+    goods_fileName VARCHAR2(60),
+    order_goods_qty NUMBER(5),
+    delivery_state VARCHAR2(20),
+    member_id VARCHAR2(20),
+    order_hp VARCHAR2(20),
+    receiver_name VARCHAR2(50),
+    receiver_hp1 VARCHAR2(20),
+    delivery_address VARCHAR2(500),
+    pay_method VARCHAR2(200),
+    card_com_name VARCHAR2(50),
+    pay_order_hp_num VARCHAR2(20) DEFAULT 'delivery_prepared',
+    pay_order_time DATE DEFAULT sysdate
+);
 
 
 --------------------------------------------------------
@@ -125,10 +144,30 @@ insert into t_shop_goods (goods_id,goods_sort,goods_title,goods_writer_intro,goo
 insert into t_shop_goods (goods_id,goods_sort,goods_title,goods_writer_intro,goods_price,goods_delivery_price,goods_delivery_date,goods_status) VALUES (16,'바른연애길잡이','바른연애 길잡이 세로 패브릭 포스터','세로 패브릭 포스터 (70X110)',26000,3000,TO_DATE('22/10/19','RR/MM/DD'),'newgoods');
 
 
+drop sequence ORDER_SEQ_NUM;
+drop sequence SEQ_GOODS_ID;
+drop sequence SEQ_IMAGE_ID;
+drop sequence SEQ_ORDER_ID;
+--------------------------------------------------------
+--  DDL for Sequence ORDER_SEQ_NUM
+--------------------------------------------------------
 
+   CREATE SEQUENCE  "ORDER_SEQ_NUM"  MINVALUE 0 MAXVALUE 10000000 INCREMENT BY 1 START WITH 400 CACHE 20 NOORDER  NOCYCLE ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_GOODS_ID
+--------------------------------------------------------
 
+   CREATE SEQUENCE  "SEQ_GOODS_ID"  MINVALUE 100 MAXVALUE 1000000 INCREMENT BY 1 START WITH 400 CACHE 20 ORDER  NOCYCLE ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_IMAGE_ID
+--------------------------------------------------------
 
+   CREATE SEQUENCE  "SEQ_IMAGE_ID"  MINVALUE 1 MAXVALUE 11111111 INCREMENT BY 1 START WITH 400 NOCACHE  NOORDER  NOCYCLE ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_ORDER_ID
+--------------------------------------------------------
 
+   CREATE SEQUENCE  "SEQ_ORDER_ID"  MINVALUE 0 MAXVALUE 10000000 INCREMENT BY 1 START WITH 400 NOCACHE  ORDER  NOCYCLE ;
 
 
 
