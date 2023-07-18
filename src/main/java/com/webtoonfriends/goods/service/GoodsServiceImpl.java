@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.webtoonfriends.goods.dao.GoodsDAO;
 import com.webtoonfriends.goods.vo.GoodsVO;
+import com.webtoonfriends.goods.vo.ImageFileVO;
 
 @Service("goodsService")
 @Transactional(propagation = Propagation.REQUIRED)
@@ -45,5 +46,22 @@ public class GoodsServiceImpl implements GoodsService {
 	@Override
 	public List<GoodsVO> menuGoods(String menuGoods) throws Exception {
 		return goodsDAO.selectMenusList(menuGoods);
+	}
+
+	@Override
+	public List<GoodsVO> searchGoods(String searchWord) throws Exception {
+		return goodsDAO.selectGoodsBySearchWord(searchWord);
+	}
+
+	@Override
+	public Map goodsDetail(String _goods_id) throws Exception {
+		Map goodsMap = new HashMap();
+		GoodsVO goodsVO = goodsDAO.selectGoodsDetail(_goods_id);
+		goodsMap.put("goodsVO", goodsVO);
+		
+		List<ImageFileVO> imageList = goodsDAO.selectGoodsDetailImage(_goods_id);
+		goodsMap.put("imageList", imageList);
+		
+		return goodsMap;
 	}
 }

@@ -8,5 +8,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 public interface GoodsController {
 	public ModelAndView menuGoods(@RequestParam("menuGoods") String menuGoods,HttpServletRequest request, HttpServletResponse response) throws Exception;
-	
+	public ModelAndView searchGoods(@RequestParam("searchWord") String searchWord,HttpServletRequest request, HttpServletResponse response) throws Exception;
+	public ModelAndView goodsDetail(@RequestParam("goods_id") String goods_id,HttpServletRequest request, HttpServletResponse response) throws Exception;
 }

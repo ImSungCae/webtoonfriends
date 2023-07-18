@@ -26,7 +26,7 @@
 				<c:when test="${isLogOn==true and not empty memberInfo }">
 					<li><a href="${contextPath }/member/logout.do">로그아웃</a></li>
 					<li><a href="${contextPath }/mypage/myDetailInfo.do">마이페이지</a></li>
-					<li><a href="#">장바구니</a></li>
+					<li><a href="${contextPath }/cart/myCartList.do">장바구니</a></li>
 				</c:when>
 				<c:otherwise>
 					<li><a href="${contextPath }/member/loginForm.do">로그인</a></li>
@@ -70,10 +70,20 @@
 					${contextPath }/member/loginForm.do"> 
 				</c:otherwise>
 			</c:choose>
-			
 			<i class="fa-sharp fa-solid fa-user fa-xl"
 				style="color: #00dc64;"></i>
-			</a> <a href="#"> <i class="fa-sharp fa-solid fa-cart-shopping fa-xl"
+			</a> 
+			
+			<a href="
+			<c:choose>
+				<c:when test="${isLogOn==true and not empty memberInfo }">
+					${contextPath }/cart/myCartList.do"> 
+				</c:when>
+				<c:otherwise>
+					${contextPath }/member/loginForm.do"> 
+				</c:otherwise>
+			</c:choose>
+			<i class="fa-sharp fa-solid fa-cart-shopping fa-xl"
 				style="color: #00dc64;"></i>
 			</a>
 		</div>

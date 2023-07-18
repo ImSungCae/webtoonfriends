@@ -3,6 +3,7 @@ package com.webtoonfriends.common.file;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.OutputStream;
+import java.net.URLEncoder;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -24,6 +25,7 @@ public class FileDownloadController {
 		OutputStream out = response.getOutputStream();
 		String filePath=CURR_IMAGE_REPO_PATH+"\\"+goods_id+"\\"+fileName;
 		File image=new File(filePath);
+		fileName = URLEncoder.encode(fileName,"utf-8");
 
 		response.setHeader("Cache-Control","no-cache");
 		response.addHeader("Content-disposition", "attachment; fileName="+fileName);

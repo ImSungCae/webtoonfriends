@@ -55,7 +55,7 @@ CREATE TABLE t_shop_cart(
     cart_id NUMBER(10) primary key,
     goods_id NUMBER(20),
     member_id VARCHAR2(20),
-    cart_goods_count NUMBER(4) DEFAULT 1,
+    cart_goods_qty NUMBER(4) DEFAULT 1,
     credate DATE DEFAULT sysdate
 );
 

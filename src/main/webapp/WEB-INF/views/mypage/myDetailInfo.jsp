@@ -3,7 +3,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-	<div id="memInfo">
+
+<!-- 회원 탈퇴시 메인으로 안가지는 사항 해결 -->
+<c:if test="${isLogOn==false and empty memberInfo }">
+	<script>
+			location.href = "${contextPath}/main/main.do";
+	</script>
+</c:if>
+	<div id="memInfo" class="detail_box">
 		<h2>내정보</h2>
 		<form name="mod_member" method="post">
 			<table>
@@ -114,14 +121,14 @@
 				async : false,
 				url : "${contextPath}/mypage/deleteMember.do",
 				data : {
-					member_id : member_id,
+					member_id : member_id, 
 					del_yn : del_yn
 				},
 				success : function(data, textStatus) {
 					if (data.trim() == 'delete_success') {
 						//성공시 안내와 함께 logout.do
-						location.href = "${contextPath}/member/logout.do";
 						alert("탈퇴되었습니다.");
+						location.href = "${contextPath}/member/logout.do";
 					} else if (data.trim() == 'failed') {
 						alert("다시 시도해 주세요.");
 					}
