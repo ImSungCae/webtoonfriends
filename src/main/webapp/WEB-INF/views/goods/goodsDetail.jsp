@@ -91,6 +91,8 @@ count_box.addEventListener('click', function (e) {
 		count= +count + val;
 		if(count<=0){
 			count++;
+		}else if(count>7){
+			count--;
 		}
 		price.replace(',','');
 		$('#count').attr("value",count);

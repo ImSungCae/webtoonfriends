@@ -382,11 +382,12 @@ article h3{
 
 .detail_box{
 	margin-left: 150px;
-	padding: 70px;
+	padding: 40px 70px;
 }
 
 .detail_box h2{
 	border-bottom: 3px solid #00dc64;
+	font-size:24px;
 	padding: 20px 0;
 }
 
@@ -615,7 +616,110 @@ article h3{
 	background-color: #111;
 }
 
+/* 장바구니 */
+#cart{
+	font-size: 14px;
+}
+#cart form{
+	margin-top:30px;
+	border:1px solid rgb(227,227,227);
+	border-radius:5px;
+	font-size: 14px;
+}
 
+.goods_info_box{
+	display: flex;
+	align-items: center;
+	box-sizing: border-box;
+	height: 150px;
+	border: 1px solid rgb(227,227,227);
+	border-radius:5px;
+	margin:20px;
+}
+.goods_info_box a{
+	color: #000;
+	font-size: 15px;
+}
+
+.goods_info_box>div:first-of-type{
+	background-color: rgb(227,227,227);
+	height: 100%;
+	padding: 0 10px;
+	display: flex;
+	align-items: center;
+}
+.goods_info_box>div:nth-of-type(2){
+	width: 100%;
+}
+.goods_info_box .detail_info{
+	display: flex;
+	line-height:22px;
+	align-items:center;
+	padding: 0 20px;
+}
+
+.goods_info_box .detail_info>div{
+	margin:0 10px;
+}
+.goods_info_box .detail_info>div>p:nth-of-type(2){
+	color:#a2a2a2;
+	font-size: 12px;
+}
+.goods_info_box .goods_modi{
+	box-sizing:border-box;
+	display: flex;
+	flex-direction: column;
+	height:100%;
+	padding: 10px;
+	border-left: 1px solid rgb(227,227,227);
+	gap:15px;
+	justify-content: space-evenly;
+}
+.goods_info_box .goods_modi select{
+	height:25%;
+	border: 1px solid rgb(227,227,227);
+	border-radius: 5px;
+	text-align: center;
+}
+.goods_info_box .goods_modi a{
+	font-size: 14px;
+	height:25%;
+	border: 1px solid rgb(227,227,227);
+	border-radius: 5px;
+	display: flex;
+	justify-content :center;
+	align-items: center;
+}
+#cart .d-none{
+	display: none;
+}
+#cart .allSelect{
+	margin: 10px 0;
+	display: flex;
+	justify-content: flex-end;
+	gap:6px;
+}
+
+#cart .tot_price{
+	display: flex;
+	gap:10px;
+	line-height:50px;
+	justify-content: flex-end;
+	align-items:center;
+	border:1px solid rgb(227,227,227);
+	padding: 0 15px;
+	margin-bottom: 10px;
+}
+#cart .tot_price #totalPrice{
+	font-size: 18px;
+	font-weight: bold;
+	vertical-align: top;
+	margin: 0 5px;
+}
+#cart button{
+	background-color: #00dc64;
+	color: #fff;
+}
 
 
 /* footer */

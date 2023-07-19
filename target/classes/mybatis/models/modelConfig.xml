@@ -16,6 +16,8 @@
 		<typeAlias type="com.webtoonfriends.goods.vo.ImageFileVO"
 			alias="imageFileVO" />
 		<typeAlias type="com.webtoonfriends.cart.vo.CartVO" alias="cartVO" />
+		<typeAlias type="com.webtoonfriends.order.vo.OrderVO" alias="orderVO" />
+		
 	</typeAliases>
 </configuration>
 

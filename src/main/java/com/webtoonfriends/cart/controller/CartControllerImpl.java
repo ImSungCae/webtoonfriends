@@ -43,7 +43,6 @@ public class CartControllerImpl extends BaseController implements CartController
 		//회원정보에 맞는 장바구니 리스트를 불러온다. 
 		cartVO.setMember_id(member_id);
 		Map<String ,List> cartMap=cartService.myCartList(cartVO);
-		
 		session.setAttribute("cartMap", cartMap);
 		return mav;
 	}

@@ -36,7 +36,7 @@
 		select cart_id, goods_id, member_id, cart_goods_qty, creDate 
 		from t_shop_cart 
 		where member_id=#{member_id} 
-		ORDER BY credate desc
+		order by creDate desc
 		]]>
 	</select>
 
@@ -44,17 +44,16 @@
 	<select id="selectGoodsList" resultMap="goodsResult"
 		parameterType="java.util.Map">
       <![CDATA[
-        select g.*,d.fileName from t_shop_goods g, t_goods_image d
-          where g.goods_id=d.goods_id
+         select g.*,d.fileName from t_shop_goods g, t_goods_image d , t_shop_cart c
+          where g.goods_id=d.goods_id and g.goods_id=c.goods_id
           and d.filetype='main_image'
-           and g.goods_id in
+           and g.goods_id in 
       ]]>
 		<foreach item="item" collection="list" open="(" separator=","
 			close=")">
 			#{item.goods_id}
 		</foreach>
-
-
+		order by c.creDate desc
 	</select>
 
 

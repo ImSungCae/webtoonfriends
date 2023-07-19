@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.counts">
+	<!-- 장바구니 갯수 카운트 -->
+	<select id="cartLen" parameterType="String" resultType="int">
+        <![CDATA[
+        select count(*) from t_shop_cart where member_id=#{member_id}
+	    ]]>
+	</select>
+</mapper>
