@@ -76,7 +76,8 @@
 
 <script>
 /* 수량 +,- 버튼시 수량 input value 값 변경  
-	1보다 아래로 버튼 누를시 ++ 을 통해 1 유지
+	1미만으로 버튼 누를시 ++ 을 통해 1 유지
+	7초과로 버튼 누를시 -- 을 통해 7 유지	
 */
 let count = $('#count').val();
 let price = $('#price').val();
@@ -121,13 +122,13 @@ function add_cart(goods_id) {
 
 
 //바로 주문하기 
-function fn_order_each_goods(goods_id,goods_title,goods_sales_price,fileName){
+function fn_order_each_goods(goods_id,goods_title,goods_price,fileName){
 	 	var total_price,final_total_price;
-		var order_goods_qty=document.getElementById("order_goods_qty");
+		var order_goods_qty=document.getElementById("count");
 		var formObj=document.createElement("form");
 		var i_goods_id = document.createElement("input"); 
 	    var i_goods_title = document.createElement("input");
-	    var i_goods_sales_price=document.createElement("input");
+	    var i_goods_price=document.createElement("input");
 	    var i_fileName=document.createElement("input");
 	    var i_order_goods_qty=document.createElement("input");
 	    
@@ -142,7 +143,7 @@ function fn_order_each_goods(goods_id,goods_title,goods_sales_price,fileName){
 		    i_fileName.name="goods_fileName";
 		    i_order_goods_qty.name="order_goods_qty";
 		    i_goods_id.value=goods_id;
-		    i_order_goods_qty.value=$('#order_goods_qty').val();
+		    i_order_goods_qty.value=$('#count').val();
 		    i_goods_title.value=goods_title;
 		    i_goods_price.value=goods_price;
 		    i_fileName.value=fileName;

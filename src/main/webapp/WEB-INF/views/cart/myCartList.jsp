@@ -9,8 +9,14 @@
 
 <c:set var="totalGoodsNum" value="0" />
 <!--주문 개수 -->
-<c:set var="totalDeliveryPrice" value="3000" />
+
 <!-- 총 배송비 -->
+<c:if test="${empty myCartList }">
+<c:set var="totalDeliveryPrice" value="0" />
+</c:if>
+<c:if test="${not empty myCartList }">
+<c:set var="totalDeliveryPrice" value="3000" />
+</c:if>
 
 <script>
 	function selectValue(selectBox,value,goods_id,index) {
@@ -59,51 +65,42 @@
 
 	
 	//선택(전체)상품 주문하기
-	function fn_order_all_cart_goods(){
-		var order_goods_qty;
-		var order_goods_id;
-		var objForm=document.frm_order_all_cart;
-		var cart_goods_qty=objForm.cart_goods_qty; 
-		var h_order_each_goods_qty=objForm.h_order_each_goods_qty;
-		var checked_goods=objForm.checked_goods;
-		
-		var cartGood=document.getElementsByClassName("cartGood");
-		var length=document.getElementsByClassName("cartGood").length;
-		let checkLen = 0;
-		if(length>1){
-			//전체 체크박스를 돌려 체크됬을때만 걸러낸다.
-			for(var i=0; i<length;i++){
-				if(checked_goods[i].checked==true){
-					checkLen++;
-					console.log(checkLen);
-					order_goods_id=checked_goods[i].value;
-					order_goods_qty=cart_goods_qty[i].value;
-					//console.log(order_goods_id+":"+order_goods_qty);
-					//각 상품의 정보를 해당 숨겨진 hidden input에 넣어 submit
-					cart_goods_qty[i].value=order_goods_id+":"+order_goods_qty;
-				}
-			}	
-		}else if(length=1){//선택된 상품이 하나일때는 분기처리한다.
-			if(cartGood[0].checked){
-				checkLen++;
-				order_goods_id=checked_goods.value;
-				order_goods_qty=cart_goods_qty.value;
-				//각 상품의 정보를 해당 숨겨진 hidden input에 넣어 submit
-				cart_goods_qty.value=order_goods_id+":"+order_goods_qty;
+function fn_order_all_cart_goods(){
+//	alert("모두 주문하기");
+	var order_goods_qty;
+	var order_goods_id;
+	var objForm=document.frm_order_all_cart;
+	var cart_goods_qty=objForm.cart_goods_qty;
+	var h_order_each_goods_qty=objForm.h_order_each_goods_qty;
+	var checked_goods=objForm.checked_goods;
+	var length=checked_goods.length;
+	
+	
+	//alert(length);
+	if(length>1){
+		for(var i=0; i<length;i++){
+			if(checked_goods[i].checked==true){
+				order_goods_id=checked_goods[i].value;
+				order_goods_qty=cart_goods_qty[i].value;
+				cart_goods_qty[i].value="";
+				cart_goods_qty[i].value=order_goods_id+":"+order_goods_qty;
 			}
-		}
-		
-		//체크된 상품이 있을 경우 위에 세팅한 값으로 주문.
-		if(checkLen > 0){
-			objForm.method="post";
-		 	objForm.action="${contextPath}/order/orderAllCartGoods.do";
-			objForm.submit();
-			//사용자가 뒤로가기 한뒤 다시 주문할때를 대비해 input 값을 되돌려놓음.
-		 	cart_goods_qty[i].value=cart_goods_qty[i].previousElementSibling.value;
-			
-		}else {alert("원하시는 상품을 선택해주세요!");}//체크된 상품이 없을 경우 submit하지않고 alert만 표시.
-		
+		}	
+	}else{
+		order_goods_id=checked_goods.value;
+		order_goods_qty=cart_goods_qty.value;
+		cart_goods_qty.value=order_goods_id+":"+order_goods_qty;
+		//alert(select_goods_qty.value);
 	}
+		
+ 	objForm.method="post";
+ 	objForm.action="${contextPath}/order/orderAllCartGoods.do";
+	objForm.submit();
+	for (var i = 0; i < length; i++) {
+		cart_goods_qty[i].value=cart_goods_qty[i].previousElementSibling.value;
+	}
+}
+
 
 
 	//개별 주문하기
@@ -163,7 +160,10 @@
 	<div>
 		<c:choose>
 			<c:when test="${empty myCartList }">
-				<p>장바구니에 상품이 없습니다.</p>
+				<p class="emptyCart">장바구니에 상품이 없습니다.
+					<i class="fa-sharp fa-solid fa-cart-shopping fa-xl"></i>
+				</p>
+				
 			</c:when>
 			<c:otherwise>
 				<form name="frm_order_all_cart">
@@ -175,7 +175,7 @@
 						<!-- 상품정보 및 선택영역  -->
 						<div class="goods_info_box">
 							<!-- 체크박스 영역  -->
-							<div>
+							<div class="check">
 								<input type="checkbox" name="checked_goods"
 									class="cartGood"
 									price="${item.goods_price*cart_goods_qty }"
@@ -184,7 +184,7 @@
 							<!-- 체크박스 영역  -->
 							
 							<!-- 상품상세페이지로 이동  -->
-							<div>
+							<div class="detail_info_box">
 								<a href="${contextPath}/goods/goodsDetail.do?goods_id=${item.goods_id }">
 									<div class="detail_info">
 										<img src="${contextPath}/thumbnails.do?goods_id=${item.goods_id}&fileName=${item.goods_fileName}"
@@ -222,8 +222,7 @@
 															name="cart_goods_qty" value="${cart_goods_qty}">
 	
 								<!-- 주문하기 -->
-								<%-- javascript:fn_order_each_goods('${item.goods_id }','${item.goods_title }','${item.goods_sales_price}','${item.goods_fileName}'); --%>
-								<a href="#"
+								<a href="javascript:fn_order_each_goods('${item.goods_id }','${item.goods_title }','${item.goods_price}','${item.goods_fileName}');"
 									style="width: 150px;">주문하기</a>
 	
 								<!-- 삭제하기 -->
@@ -304,7 +303,6 @@ cart_goods_qty_inputs.forEach((cart_goods_qty_inputs) => {
 		}
 	}
 });
-
 
 
 //전체 선택을 눌렀을때 금액 계산

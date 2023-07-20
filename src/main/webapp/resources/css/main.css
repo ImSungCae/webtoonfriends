@@ -641,14 +641,14 @@ article h3{
 	font-size: 15px;
 }
 
-.goods_info_box>div:first-of-type{
+.goods_info_box>.check{
 	background-color: rgb(227,227,227);
 	height: 100%;
 	padding: 0 10px;
 	display: flex;
 	align-items: center;
 }
-.goods_info_box>div:nth-of-type(2){
+.goods_info_box>.detail_info_box{
 	width: 100%;
 }
 .goods_info_box .detail_info{
@@ -690,7 +690,7 @@ article h3{
 	justify-content :center;
 	align-items: center;
 }
-#cart .d-none{
+.goods_info_box .d-none{
 	display: none;
 }
 #cart .allSelect{
@@ -720,6 +720,148 @@ article h3{
 	background-color: #00dc64;
 	color: #fff;
 }
+
+#cart .emptyCart{
+	border: 1px solid rgb(227,227,227);
+	text-align:center;
+	padding:20px;
+	margin-top:30px;
+	opacity: .4;
+}
+
+/* 주문페이지  */
+#order_box{
+	box-sizing:border-box;
+	padding:30px 0;
+	display: flex;
+	justify-content: space-between;
+}
+#order_box h2{
+	margin:20px 0;
+}
+
+#order_box>div:first-of-type{
+	width: 65%;
+	margin-left: 50px;
+}
+
+#order_box>div:first-of-type button{
+	width: 85%;
+	border: 1px solid rgb(227,227,227);
+	background-color:#fff;
+	padding: 20px;
+	border-radius: 10px;
+	margin: 7px 0;
+	font-weight: bold;
+	font-size: 18px;
+}
+#order_box>div:first-of-type button:first-of-type{
+	background-color: #00dc64;
+	color: #fff;
+}
+#order_box>div:first-of-type label{
+	font-weight: bold;
+	display: block;
+	margin: 30px 0;
+	
+}
+
+#order_box>div:first-of-type label>input{
+	display: block;
+	width:85%;
+	padding: 15px;
+	border:1px solid rgb(227,227,227);
+	border-radius:5px;
+	outline-color: silver;
+	margin:10px 0;
+}
+
+#order_box .checked_box{
+	width:90%;
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+	margin-bottom: 20px;
+}
+
+#order_box .checked_box p{
+	font-size: 14px;
+	margin-bottom: 10px;
+}
+#order_box .checked_box p>input{
+	margin-left: 15px;
+}
+.zipbox #zipcode{
+	padding: 15px;
+	border:1px solid rgb(227,227,227);
+	border-radius:5px;
+	outline-color: silver;
+	margin-top: 20px;
+}
+.zipbox>a{
+	display: inline-block;
+	box-sizing:border-box;
+	padding: 12px;
+	border:1px solid rgb(227,227,227);
+	background-color:#111;
+	border-radius:5px;
+	font-size: 13px;
+	color: #fff;
+}
+
+
+.order_div{
+	position:sticky;
+	top: 100px;
+	align-self: flex-start;
+	width: 35%;
+	
+}
+.order_div>div{
+	border: 1px solid rgb(227,227,227);
+	border-radius:5px;
+	margin:30px 0;
+	padding: 20px;
+}
+.order_div>div h4{
+	border-bottom: 1px solid;
+	padding: 10px 0;
+	margin-bottom: 10px;
+}
+
+.order_div .order_goods .detail_info{
+	display: flex;
+	align-items: center;
+	border: 1px solid rgb(227,227,227);
+	margin:10px 0;
+	font-size: 13px;
+}
+
+.order_div .order_goods .detail_info p{
+	
+	margin-left:10px;
+	color: #000;
+}
+
+.order_div .order_goods .detail_info .d-none{
+	display: none;
+}
+
+.order_div>.order_info p{
+	font-size: 13px;
+	line-height: 25px;
+	display: flex;
+	justify-content: space-between;
+}
+.order_div>.order_info p:last-of-type{
+	font-weight: bold;
+	font-size: 15px;
+	padding: 20px 0;
+	margin-top:20px;
+	border-top: 1px solid rgb(227,227,227);
+}
+
+
 
 
 /* footer */

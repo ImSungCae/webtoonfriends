@@ -1,10 +1,10 @@
 package com.webtoonfriends.order.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.annotation.Order;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
@@ -16,6 +16,14 @@ public class OrderDAOImpl implements OrderDAO {
 	private SqlSession sqlSession;
 
 	@Override
+	public List<OrderVO> listMyOrderGoods(OrderVO orderVO) throws DataAccessException {
+		List<OrderVO> orderGoodsList=new ArrayList<OrderVO>();
+		orderGoodsList=(ArrayList)sqlSession.selectList("mapper.order.selectMyOrderList",orderVO);
+		return orderGoodsList;
+	}
+	
+	
+	@Override
 	public void insertNewOrder(List<OrderVO> myOrderList) throws DataAccessException {
 		int order_id = selectOrderID();
 		for (int i = 0; i < myOrderList.size(); i++) {
@@ -26,9 +34,10 @@ public class OrderDAOImpl implements OrderDAO {
 		}
 	}
 	
-	private int selectOrderID() throws DataAccessException{
-		return sqlSession.selectOne("mapper.order.selectOrderID");
-	}
+	@Override
+	public OrderVO findMyOrder(String order_id) throws DataAccessException {
+		return sqlSession.selectOne("mapper.order.selectMyOrder",order_id);
+	}	
 
 	@Override
 	public void removeGoodsFromCart(List<OrderVO> myOrderList)throws DataAccessException{
@@ -36,8 +45,17 @@ public class OrderDAOImpl implements OrderDAO {
 			OrderVO orderVO =(OrderVO)myOrderList.get(i);
 			sqlSession.delete("mapper.order.deleteGoodsFromCart",orderVO);	
 		}
-	}	
+	}
+	@Override
+	public void removeGoodsFromCart(OrderVO orderVO)throws DataAccessException{
+			sqlSession.delete("mapper.order.deleteGoodsFromCart",orderVO);	
+	}
+
+
 	
+	private int selectOrderID() throws DataAccessException{
+		return sqlSession.selectOne("mapper.order.selectOrderID");
+	}
 	
 	
 }
