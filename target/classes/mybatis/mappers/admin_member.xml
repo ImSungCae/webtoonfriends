@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.admin.member">
+	<!-- 리절트 맵 정의 -->
+	<resultMap id="memberResult" type="memberVO">
+		<result property="member_id" column="member_id" />
+		<result property="member_pwd" column="member_pwd" />
+		<result property="member_name" column="member_name" />
+		<result property="hp1" column="hp1" />
+		<result property="zipcode" column="zipcode" />
+		<result property="address" column="address" />
+		<result property="subAddress" column="subAddress" />
+		<result property="joinDate" column="joinDate" />
+		<result property="del_yn" column="del_yn" />
+	</resultMap>
+
+	<select id="listMember" resultMap="memberResult"
+		parameterType="java.util.HashMap">
+		select * from (
+		select rowNum as recNum,t.*
+		from (
+		select * from t_shop_member
+		where to_char(joinDate,'yyyy-mm-dd') between #{beginDate} and #{endDate}
+		<if test="search_type=='member_id'">
+			AND member_id=#{search_word}
+		</if>
+		<if test="search_type=='member_name'">
+			AND member_name=#{search_word}
+		</if>
+		<if test="search_type=='member_hp_num'">
+			AND hp1=#{search_word}
+		</if>
+		order by joinDate desc
+		) t
+		)
+		where
+		recNum between (#{section}-1)*100+ (#{pageNum}-1)*10+1 and
+		(#{section}-1)*100+(#{pageNum})*10
+	</select>
+
+	<update id="modifyMemberInfo" parameterType="java.util.HashMap">
+		update t_shop_member
+		<set>
+			<if test=" member_pw!='' and member_pw!=null">
+				member_pwd=#{member_pwd},
+			</if>
+			<if test=" hp1!='' and hp1!=null">
+				hp1=#{hp1},
+			</if>
+			<if test=" zipcode!='' and zipcode!=null">
+				zipcode=#{zipcode},
+			</if>
+			<if test=" address!='' and address!=null">
+				address=#{address},
+			</if>
+			<if test=" subAddress'' and subAddress!=null">
+				subAddress=#{subAddress},
+			</if>
+			<if test=" del_yn!='' and del_yn!=null">
+				del_yn=#{del_yn}
+			</if>
+		</set>
+		where
+		member_id=#{member_id}
+	</update>
+
+</mapper>

@@ -21,6 +21,7 @@
 		<header>
 				 <tiles:insertAttribute name="header" />
 		</header>
+			<tiles:insertAttribute name="quickMenu" />
 		<div id="wrap">
 		
 			<article>
@@ -29,7 +30,6 @@
 			</article>
 			
 			
-			<tiles:insertAttribute name="quickMenu" />
 		</div>
 		
 			<footer>

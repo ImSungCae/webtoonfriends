@@ -113,6 +113,7 @@ function add_cart(goods_id) {
 			cart_goods_qty:cart_goods_qty},
 		success : function(data, textStatus) {
 			if(data.trim()=='add_success'){alert("장바구니에 추가되엇습니다.");
+			location.reload();
 			}else if(data.trim()=='already_existed'){alert("이미 카트에 등록된 상품입니다.");	}
 		},
 		error : function(data, textStatus) {alert("로그인 후 추가하실 수 있습니다!");},

@@ -25,7 +25,7 @@
 			<c:choose>
 				<c:when test="${isLogOn==true and not empty memberInfo }">
 					<li><a href="${contextPath }/member/logout.do">로그아웃</a></li>
-					<li><a href="${contextPath }/mypage/myDetailInfo.do">마이페이지</a></li>
+					<li><a href="${contextPath }/mypage/listMyOrderHistory.do">마이페이지</a></li>
 					<li><a href="${contextPath }/cart/myCartList.do">장바구니</a></li>
 				</c:when>
 				<c:otherwise>
@@ -35,7 +35,7 @@
 			</c:choose>
 			<li><a href="#">고객센터</a></li>
 			<c:if test="${isLogOn==true and memberInfo.member_id=='admin' }">
-					<li><a href="${contextPath }/admin/goods/adminGoodsMain.do">관리자</a></li>
+					<li><a href="${contextPath }/admin/member/adminMemberMain.do">관리자</a></li>
 			</c:if>
 		</ul>
 	</div>

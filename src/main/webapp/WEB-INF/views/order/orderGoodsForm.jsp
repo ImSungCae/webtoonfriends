@@ -72,7 +72,7 @@
 					<tr>
 						<td>
 							<strong>카드 선택<strong>:&nbsp;&nbsp;&nbsp;
-							  <select id="card_com_name" name="card_com_name">
+							  <select id="card_com_name" name="card_com_name" onchange="selectValue(this, this.value)">
 									<option value="삼성" selected>삼성</option>
 									<option value="하나SK">하나SK</option>
 									<option value="현대">현대</option>
@@ -84,7 +84,7 @@
 									<option value="NH농협">NH농협</option>
 							</select>
 							<strong>할부 기간:<strong>  &nbsp;&nbsp;&nbsp;
-							<select id="card_pay_month" name="card_pay_month">
+							<select id="card_pay_month" name="card_pay_month" onchange="selectValue(this, this.value)">
 									<option value="일시불" selected>일시불</option>
 									<option value="2개월">2개월</option>
 									<option value="3개월">3개월</option>
@@ -101,9 +101,9 @@
 					  </td>
 					</tr>
 				</table>
-			</div>
+			</div>	
 		</form>
-		<button onclick="">결제하기</button>
+		<button onclick="fn_process_pay_order()">결제하기</button>
 		<button onclick="location.href='${contextPath}/main/main.do'">쇼핑 계속하기</button>
 	</div>
 	
@@ -167,6 +167,14 @@
 </div>
 
 <script>
+
+	//select박스가 체크되었을때 input에 반영함.
+	function selectValue(selectBox, value){
+		var input = selectBox.nextElementSibling
+		input.setAttribute("value", value);
+	} 
+
+
 	//다음 주소 찾기
 	function execDaumPostcode() {
 		new daum.Postcode({
@@ -199,6 +207,106 @@
 		
 		
 	}
+	
+	//pay_method
+	// 라디오 버튼 요소 선택
+	function pay_method(){
+		var radios = document.getElementsByName('pay_method');
+		// 선택된 라디오 버튼의 값을 가져오기
+		for (var i = 0; i < radios.length; i++) {
+		  if (radios[i].checked) {
+		    var selectedValue = radios[i].value;
+		    return selectedValue;
+		    break;
+		  }
+		}	
+	}
+	
+	
+	// 분리되어있는 배송지 정보 
+	let delivery_address;
+	var i_zipcode = document.getElementById("zipcode");
+	var i_address = document.getElementById("address");
+	var i_subAddress = document.getElementById("subAddress");
+	const inputs = document.querySelectorAll("input[required]");
+	
+	var formObj = document.createElement("form");
+	formObj.setAttribute("id", "form_basic");
+	
+	/* 최종결제 */
+	function fn_process_pay_order(){
+		
+		let reqBool = true;
+		inputs.forEach(input => {
+			if(!input.value){
+				reqBool=false;
+			}
+		});
+		if(reqBool){
+			if(!confirm("결제하시겠습니까?")){
+				alert("결제가 취소되었습니다.");
+			}else{
+				// 배송지 통합
+				delivery_address = "우편번호:" + i_zipcode.value + "<br>" + "주소:"
+				+ i_address.value + "<br>" + "상세주소:"
+				+ i_subAddress.value;
+				
+				//수령자 이름
+				var i_receiver_name = document.createElement("input");
+				i_receiver_name.name = "receiver_name";
+				i_receiver_name.value = document.getElementById("receiver_name").value;
+				formObj.appendChild(i_receiver_name);
+				
+				//수령자 핸드폰
+				var i_receiver_hp1 = document.createElement("input");
+				i_receiver_hp1.name = "receiver_hp1";
+				i_receiver_hp1.value = document.getElementById("receiver_hp1").value;
+				formObj.appendChild(i_receiver_hp1);
+				
+				//배송정보
+				var i_delivery_address = document.createElement("input");
+				i_delivery_address.name = "delivery_address";
+				i_delivery_address.value = delivery_address;
+				formObj.appendChild(i_delivery_address);
+				
+				//결제방법
+				var i_pay_method = document.createElement("input");
+				i_pay_method.name = "pay_method";
+				i_pay_method.value= pay_method();
+				formObj.appendChild(i_pay_method);
+				
+				//카드사선택
+				var i_card_com_name = document.createElement("input");
+				i_card_com_name.name="card_com_name";
+				i_card_com_name.value=document.getElementById("card_com_name").value;
+				formObj.appendChild(i_card_com_name);
+				
+				//할부기간
+				var i_card_pay_month = document.createElement("input");
+				i_card_pay_month.name="card_pay_month";
+				i_card_pay_month.value=document.getElementById("card_pay_month").value;
+				formObj.appendChild(i_card_pay_month);
+				
+				//핸드폰결제
+			 	var i_pay_order_hp_num = document.createElement("input");
+				i_pay_order_hp_num.name="pay_order_hp_num"; 
+			    i_pay_order_hp_num.value=document.getElementById("pay_order_hp_num").value;
+			    formObj.appendChild(i_pay_order_hp_num); 
+				
+			    document.body.appendChild(formObj); 
+			    formObj.method="post";
+			    formObj.action="${contextPath}/order/payToOrderGoods.do";
+			    formObj.submit();
+			}
+			
+			
+		}else{
+			alert("입력하신 정보가 없거나 올바르지않습니다.");
+		}
+		
+	}	
+	
+	
 	
 </script>
 

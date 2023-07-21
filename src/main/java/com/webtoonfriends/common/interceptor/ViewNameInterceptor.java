@@ -33,6 +33,26 @@ public class ViewNameInterceptor extends HandlerInterceptorAdapter {
 			cartCount = sqlSession.selectOne("mapper.counts.cartLen", member_id);
 			session.setAttribute("cartCount", cartCount);
 
+			int deliveringCount = 0;
+			deliveringCount=sqlSession.selectOne("mapper.counts.deliveringLen",member_id);
+			session.setAttribute("deliveringCount", deliveringCount);
+			
+			if(member_id.equals("admin") == true) {
+				int goodsLen = 0;
+				goodsLen=sqlSession.selectOne("mapper.counts.goodsLen");
+				session.setAttribute("goodsLen", goodsLen);
+				
+				int ordersLen = 0;
+				ordersLen=sqlSession.selectOne("mapper.counts.ordersLen");
+				session.setAttribute("ordersLen", ordersLen);
+				
+				Long totalSales = 0L;
+				totalSales=(Long)sqlSession.selectOne("mapper.counts.totalSales");
+				session.setAttribute("totalSales", totalSales);
+				
+				
+			}
+			
 		} catch (Exception e) {
 		}
 		try {

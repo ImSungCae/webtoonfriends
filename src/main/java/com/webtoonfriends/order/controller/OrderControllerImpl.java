@@ -61,7 +61,7 @@ public class OrderControllerImpl extends BaseController implements OrderControll
 		MemberVO memberInfo = (MemberVO) session.getAttribute("memberInfo");
 
 		session.setAttribute("myOrderList", myOrderList);
-		session.setAttribute("order", memberInfo);
+		session.setAttribute("orderer", memberInfo);
 		return mav;
 	}
 

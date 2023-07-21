@@ -1,5 +1,6 @@
 package com.webtoonfriends.mypage.service;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.webtoonfriends.member.vo.MemberVO;
 import com.webtoonfriends.mypage.dao.MyPageDAO;
+import com.webtoonfriends.order.vo.OrderVO;
 
 @Service("myPageService")
 @Transactional(propagation=Propagation.REQUIRED)
@@ -16,6 +18,26 @@ public class MyPageServiceImpl implements MyPageService{
 	@Autowired
 	private MyPageDAO myPageDAO;
 
+	@Override
+	public List<OrderVO> listMyOrderHistory(Map dateMap) throws Exception {
+		return myPageDAO.selectMyOrderHistoryList(dateMap);
+	}
+	
+	@Override
+	public void cancelOrder(String order_id) throws Exception {
+		myPageDAO.updateMyOrderCancel(order_id);
+	}
+	
+	@Override
+	public void returnOrder(String order_id) throws Exception {
+		myPageDAO.updateMyOrderReturn(order_id);
+	}
+	
+	@Override
+	public void exchangeOrder(String order_id) throws Exception {
+		myPageDAO.updateMyOrderExchange(order_id);
+	}
+	
 	@Override
 	public MemberVO myDetailInfo(String member_id) throws Exception {
 		return myPageDAO.selectMyDetailInfo(member_id);
@@ -32,5 +54,6 @@ public class MyPageServiceImpl implements MyPageService{
 	public void deleteMember(String member_id) throws Exception {
 		myPageDAO.deleteMember(member_id);
 	}
+
 
 }

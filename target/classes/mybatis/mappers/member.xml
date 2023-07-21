@@ -4,7 +4,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mapper.member">
-<!-- 리절트 맵 정의 -->	
+	<!-- 리절트 맵 정의 -->
 	<resultMap id="memberResult" type="memberVO">
 		<result property="member_id" column="member_id" />
 		<result property="member_pwd" column="member_pwd" />
@@ -14,9 +14,11 @@
 		<result property="address" column="address" />
 		<result property="subAddress" column="subAddress" />
 		<result property="joinDate" column="joinDate" />
-	</resultMap>	
+		<result property="del_yn" column="del_yn" />
+	</resultMap>
 
-	<select id="login" resultType="memberVO"  parameterType="java.util.Map"  >
+	<select id="login" resultType="memberVO"
+		parameterType="java.util.Map">
 	    <![CDATA[
 			select * from t_shop_member 
 			 where member_id=#{member_id}
@@ -24,14 +26,15 @@
 			 
 		]]>
 	</select>
-	
-	<select id="selectOverlappedID" parameterType="String" resultType="String">
-	   select decode(count(*),1, 'true', 0, 'false')
-	   from t_shop_member
-	   where member_id = #{id}
+
+	<select id="selectOverlappedID" parameterType="String"
+		resultType="String">
+		select decode(count(*),1, 'true', 0, 'false')
+		from t_shop_member
+		where member_id = #{id}
 	</select>
-	
-  <insert id="insertNewMember"  parameterType="memberVO">
+
+	<insert id="insertNewMember" parameterType="memberVO">
   <![CDATA[
     	insert into t_shop_member(member_id,
 				 					 member_pwd,
@@ -43,6 +46,6 @@
                                     #{hp1},#{zipcode},#{address},#{subAddress})
                                   
                                       
-   ]]>      
-  </insert>
+   ]]>
+	</insert>
 </mapper>

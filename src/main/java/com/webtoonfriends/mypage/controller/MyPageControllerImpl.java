@@ -1,6 +1,7 @@
 package com.webtoonfriends.mypage.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.webtoonfriends.common.base.BaseController;
 import com.webtoonfriends.member.vo.MemberVO;
 import com.webtoonfriends.mypage.service.MyPageService;
+import com.webtoonfriends.order.vo.OrderVO;
 
 @Controller("myPageController")
 @RequestMapping(value = "/mypage")
@@ -31,6 +33,74 @@ public class MyPageControllerImpl extends BaseController implements MyPageContro
 	private MemberVO memberVO;
 	
 	
+	@Override
+	@RequestMapping(value="/listMyOrderHistory.do" ,method = RequestMethod.GET)
+	public ModelAndView listMyOrderHistory(@RequestParam Map<String, String> dateMap,
+			                               HttpServletRequest request, HttpServletResponse response)  throws Exception {
+		String viewName=(String)request.getAttribute("viewName");
+		ModelAndView mav = new ModelAndView(viewName);
+		HttpSession session=request.getSession();
+		
+		memberVO=(MemberVO)session.getAttribute("memberInfo");
+		String member_id=memberVO.getMember_id();
+		
+		String fixedSearchPeriod = dateMap.get("fixedSearchPeriod");
+		
+		String beginDate=null,endDate=null;
+		String [] tempDate=calcSearchPeriod(fixedSearchPeriod).split(",");
+		beginDate=tempDate[0];
+		endDate=tempDate[1];
+		
+		dateMap.put("beginDate", beginDate);
+		dateMap.put("endDate", endDate);
+		dateMap.put("member_id", member_id);
+		List<OrderVO> myOrderHistList=myPageService.listMyOrderHistory(dateMap);
+		
+		String beginDate1[]=beginDate.split("-"); 
+		String endDate1[]=endDate.split("-");
+		mav.addObject("beginYear",beginDate1[0]);
+		mav.addObject("beginMonth",beginDate1[1]);
+		mav.addObject("beginDay",beginDate1[2]);
+		mav.addObject("endYear",endDate1[0]);
+		mav.addObject("endMonth",endDate1[1]);
+		mav.addObject("endDay",endDate1[2]);
+		mav.addObject("myOrderHistList", myOrderHistList);
+		return mav;
+	}
+	
+	@Override
+	@RequestMapping(value="/cancelMyOrder.do" ,method = RequestMethod.POST)
+	public ModelAndView cancelMyOrder(@RequestParam("order_id")  String order_id,
+			                         HttpServletRequest request, HttpServletResponse response)  throws Exception {
+		ModelAndView mav = new ModelAndView();
+		myPageService.cancelOrder(order_id);
+		mav.addObject("message", "cancel_order");
+		mav.setViewName("redirect:/mypage/listMyOrderHistory.do");
+		return mav;
+	}
+	
+	
+	@Override
+	@RequestMapping(value="/returnMyOrder.do" ,method = RequestMethod.POST)
+	public ModelAndView returnMyOrder(@RequestParam("order_id")  String order_id,
+			                         HttpServletRequest request, HttpServletResponse response)  throws Exception {
+		ModelAndView mav = new ModelAndView();
+		myPageService.returnOrder(order_id);
+		mav.addObject("message", "returning_goods");
+		mav.setViewName("redirect:/mypage/listMyOrderHistory.do");
+		return mav;
+	}
+	
+	@Override
+	@RequestMapping(value="/exchangeMyOrder.do" ,method = RequestMethod.POST)
+	public ModelAndView exchangeMyOrder(@RequestParam("order_id")  String order_id,
+			                         HttpServletRequest request, HttpServletResponse response)  throws Exception {
+		ModelAndView mav = new ModelAndView();
+		myPageService.exchangeOrder(order_id);
+		mav.addObject("message", "exchange_goods");
+		mav.setViewName("redirect:/mypage/listMyOrderHistory.do");
+		return mav;
+	}
 	
 	@Override
 	@RequestMapping(value = "/myDetailInfo.do",method = RequestMethod.GET)
@@ -93,5 +163,6 @@ public class MyPageControllerImpl extends BaseController implements MyPageContro
 		resEntity = new ResponseEntity(message,responHeaders,HttpStatus.OK);
 		return resEntity;
 	}
+
 
 }

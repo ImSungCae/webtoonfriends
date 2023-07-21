@@ -19,6 +19,7 @@
 </c:if>
 
 <script>
+
 	function selectValue(selectBox,value,goods_id,index) {
 		var input = selectBox.nextElementSibling
 		input.setAttribute("value",value);

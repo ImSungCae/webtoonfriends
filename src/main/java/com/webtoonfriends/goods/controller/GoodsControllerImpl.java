@@ -24,48 +24,48 @@ import com.webtoonfriends.goods.vo.GoodsVO;
 public class GoodsControllerImpl extends BaseController implements GoodsController {
 	@Autowired
 	private GoodsService goodsService;
-	
+
 	@Override
-	@RequestMapping(value = "/menuGoods.do",method = RequestMethod.GET)
-	public ModelAndView menuGoods(@RequestParam("menuGoods") String menuGoods, HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		
-		String viewName=(String)request.getAttribute("viewName");
-		List<GoodsVO> goodsList=goodsService.menuGoods(menuGoods);
+	@RequestMapping(value = "/menuGoods.do", method = RequestMethod.GET)
+	public ModelAndView menuGoods(@RequestParam("menuGoods") String menuGoods, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+
+		String viewName = (String) request.getAttribute("viewName");
+		List<GoodsVO> goodsList = goodsService.menuGoods(menuGoods);
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("goodsList", goodsList);
 		mav.addObject("menuGoods", menuGoods);
 		return mav;
 	}
 
-	@RequestMapping(value="/searchGoods.do" ,method = RequestMethod.GET)
-	public ModelAndView searchGoods(@RequestParam("searchWord") String searchWord,
-			                       HttpServletRequest request, HttpServletResponse response) throws Exception{
-		String viewName=(String)request.getAttribute("viewName");
-		List<GoodsVO> goodsList=goodsService.searchGoods(searchWord);
+	@RequestMapping(value = "/searchGoods.do", method = RequestMethod.GET)
+	public ModelAndView searchGoods(@RequestParam("searchWord") String searchWord, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		String viewName = (String) request.getAttribute("viewName");
+		List<GoodsVO> goodsList = goodsService.searchGoods(searchWord);
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("goodsList", goodsList);
 		return mav;
 	}
 
-	@RequestMapping(value="/goodsDetail.do" ,method = RequestMethod.GET)
-	public ModelAndView goodsDetail(@RequestParam("goods_id") String goods_id,
-			                       HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String viewName=(String)request.getAttribute("viewName");
+	@RequestMapping(value = "/goodsDetail.do", method = RequestMethod.GET)
+	public ModelAndView goodsDetail(@RequestParam("goods_id") String goods_id, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		String viewName = (String) request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);
-		HttpSession session=request.getSession();
-		
-		//goods_id값에 맞는 상세정보 가져와 goodsMap 할당
-		Map goodsMap=goodsService.goodsDetail(goods_id);
+		HttpSession session = request.getSession();
+
+		// goods_id값에 맞는 상세정보 가져와 goodsMap 할당
+		Map goodsMap = goodsService.goodsDetail(goods_id);
 		mav.addObject("goodsMap", goodsMap);
-		
-		//goodsMap을 goodsVO 객체에 대입
-		GoodsVO goodsVO=(GoodsVO)goodsMap.get("goodsVO");
-		
-		//퀵메뉴에 방문한 해당 상품정보를 추가
+
+		// goodsMap을 goodsVO 객체에 대입
+		GoodsVO goodsVO = (GoodsVO) goodsMap.get("goodsVO");
+
+		// 퀵메뉴에 방문한 해당 상품정보를 추가
 		addGoodsInQuick(goods_id,goodsVO,session);
-		
-		//뷰 + 상품상세 정보 리턴
+
+		// 뷰 + 상품상세 정보 리턴
 		return mav;
 	}
 
@@ -114,7 +114,5 @@ public class GoodsControllerImpl extends BaseController implements GoodsControll
 			session.setAttribute("quickGoodsList",quickGoodsList);
 			session.setAttribute("quickGoodsListNum", quickGoodsList.size());
 		}
-	
-	
-	
+
 }

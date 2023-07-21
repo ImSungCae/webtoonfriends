@@ -2,6 +2,7 @@ drop table t_shop_member;
 drop table t_shop_goods;
 drop table t_shop_cart;
 drop table t_goods_image;
+drop table t_shop_order;
 
 --------------------------------------------------------
 -- create t_shop_member
@@ -71,7 +72,7 @@ CREATE TABLE t_shop_order(
     goods_price NUMBER(5),
     goods_fileName VARCHAR2(60),
     order_goods_qty NUMBER(5),
-    delivery_state VARCHAR2(20),
+    delivery_state VARCHAR2(20)  DEFAULT 'delivery_prepared',
     member_id VARCHAR2(20),
     order_hp VARCHAR2(20),
     receiver_name VARCHAR2(50),
@@ -79,7 +80,8 @@ CREATE TABLE t_shop_order(
     delivery_address VARCHAR2(500),
     pay_method VARCHAR2(200),
     card_com_name VARCHAR2(50),
-    pay_order_hp_num VARCHAR2(20) DEFAULT 'delivery_prepared',
+    pay_order_hp_num VARCHAR2(20),
+    card_pay_month VARCHAR2(20),
     pay_order_time DATE DEFAULT sysdate
 );
 
