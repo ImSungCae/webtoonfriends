@@ -15,10 +15,10 @@
 			<li><a href="${contextPath }/goods/menuGoods.do?menuGoods=바른연애길잡이"><img alt="배너4" src="${contextPath}/resources/image/main_banner_바른연애길잡이.jpg"></a></li>
 		</ul>
 			
-		<a class="btn_left" data-direction="-1" href="#">
+		<a class="btn_left" data-direction="-1">
 			<img alt="왼쪽 슬라이드" src="${contextPath}/resources/image/arrow_back.svg">
 		</a>
-		<a class="btn_right" data-direction="1" href="#">
+		<a class="btn_right" data-direction="1">
 			<img alt="오른쪽 슬라이드" src="${contextPath}/resources/image/arrow_forward.svg">
 		</a>
 		<div class="button"></div>

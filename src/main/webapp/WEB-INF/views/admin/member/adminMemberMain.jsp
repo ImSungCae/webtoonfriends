@@ -1,5 +1,145 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
+
+<script>
+
+function search_order_history(fixedSearchPeriod) {
+	var formObj = document.createElement("form");
+	var i_fixedSearch_period = document.createElement("input");
+	i_fixedSearch_period.name = "fixedSearchPeriod";
+	i_fixedSearch_period.value = fixedSearchPeriod;
+	formObj.appendChild(i_fixedSearch_period);
+	document.body.appendChild(formObj);
+	formObj.method = "get";
+	formObj.action = "${contextPath}/admin/member/adminMemberMain.do";
+	formObj.submit();
+}
+
+
+function fn_delete_member(member_id,del_yn) {
+	var member_id=member_id;
+	var del_yn=del_yn;
+	
+	//confirm단계를 거치고 사용자가 취소를 누를경우 삭제를 취소한다.
+	var answer=confirm("해당회원을 삭제하시겠습니까?");
+	if(answer==true){
+		$.ajax({
+			type : "post",
+			async : false,
+			url : "${contextPath}/mypage/deleteMember.do",
+			data : {
+				member_id:member_id,
+				del_yn:del_yn
+			},
+			success : function(data, textStatus) {
+				if(data.trim()=='delete_success'){
+					alert("삭제되었습니다.");
+					location.href="${contextPath}/admin/member/adminMemberMain.do";
+				}else if(data.trim()=='failed'){
+					alert("다시 시도해 주세요.");	
+				}
+			},
+			error : function(data, textStatus) {
+				alert("에러가 발생했습니다."+data);
+			},
+			complete : function(data, textStatus) {}
+		});
+	}
+}
+
+
+
+</script>
+
+
 <div class="detail_box">
 	<h2>회원관리</h2>
+	<form name="frm_mod_member" id="admin_member">
+		<div>
+			<a href="javascript:search_order_history('today')" class="badge">오늘</a> 
+			<a href="javascript:search_order_history('one_month')" class="badge">1개월</a> 
+			<a href="javascript:search_order_history('two_month')" class="badge">2개월</a> 
+			<a href="javascript:search_order_history('three_month')" class="badge">3개월</a> 
+			<a href="javascript:search_order_history('six_month')" class="badge">6개월</a>
+		</div>
+
+		<div>
+			<table class="admin_member_table">
+				<tr>
+					<td>회원ID</td>
+					<td>회원정보</td>
+					<td>배송정보</td>
+					<td>가입일/탈퇴여부</td>
+					<td>-</td>
+				</tr>
+
+				<c:choose>
+					<c:when test="${empty member_list }">
+						<tr>
+							<td colspan="5">조회된 회원이 없습니다.</td>
+						</tr>
+					</c:when>
+					<c:otherwise>
+						<c:forEach var="item" items="${member_list }" varStatus="item_num">
+							<tr>
+								<td>${item.member_id }</td>
+								<td>
+									<div>
+										<span>이름</span>
+										<input type="text" value="${item.member_name }" name="member_name" placeholder="이름" readonly>
+									</div>
+									<div>
+										<span>아이디</span>
+										<input type="text" value="${item.member_id }" name="member_id" placeholder="아이디" readonly>
+									</div>
+									<div>
+										<span>비밀번호</span>
+										<input type="text" value="${item.member_pwd }" name="member_pwd" placeholder="비밀번호" readonly>
+									</div>
+									<div>
+										<span>휴대전화</span>
+										<input type="text" value="${item.hp1 }" name="hp1" placeholder="휴대전화" readonly>
+									</div>
+								</td>
+								<td>
+									<div>
+										<span>우편번호</span>
+										<input type="text" placeholder="우편번호" value="${item.zipcode }" name="zipcode" readonly>
+									</div>
+									<div>
+										<span>주소</span>
+										<input type="text" placeholder="주소" value="${item.address }" name="address" readonly>
+									</div>
+									<div>
+										<span>상세주소</span>
+										<input type="text" placeholder="상세주소" value="${item.subAddress }" name="subAddress" readonly>
+									</div>
+								</td>
+								<td>
+								<c:choose>
+									<c:when test="${item.del_yn == 'N' }">
+										<span>활동중</span>
+									</c:when>
+									<c:otherwise>
+										<span>탈퇴</span>
+									</c:otherwise>
+								</c:choose>
+								<br>${item.joinDate }</td>
+								<td>
+									<button onclick="fn_delete_member('${item.member_id}','Y')">탈퇴</button>
+								</td>
+							</tr>
+						</c:forEach>
+					</c:otherwise>
+				</c:choose>
+			</table>
+		</div>
+	</form>
 </div>
+
+
+

@@ -59,12 +59,10 @@ public class BaseController {
 		}else if(fixedSearchPeriod.equals("six_month")) {
 			cal.add(cal.MONTH,-6);
 		}
-		
 		beginYear   = Integer.toString(cal.get(Calendar.YEAR));
 		beginMonth  = df.format(cal.get(Calendar.MONTH) + 1);
 		beginDay   = df.format(cal.get(Calendar.DATE));
 		beginDate = beginYear +"-"+ beginMonth +"-"+beginDay;
-		
 		return beginDate+","+endDate;
 	}
 	

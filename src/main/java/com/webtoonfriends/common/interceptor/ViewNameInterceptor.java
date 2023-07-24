@@ -46,6 +46,10 @@ public class ViewNameInterceptor extends HandlerInterceptorAdapter {
 				ordersLen=sqlSession.selectOne("mapper.counts.ordersLen");
 				session.setAttribute("ordersLen", ordersLen);
 				
+				int membersLen = 0;
+				membersLen=sqlSession.selectOne("mapper.counts.membersLen");
+				session.setAttribute("membersLen", membersLen);
+				
 				Long totalSales = 0L;
 				totalSales=(Long)sqlSession.selectOne("mapper.counts.totalSales");
 				session.setAttribute("totalSales", totalSales);

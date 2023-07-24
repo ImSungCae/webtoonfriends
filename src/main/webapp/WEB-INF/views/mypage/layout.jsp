@@ -25,7 +25,7 @@
 			<!-- 장바구니 카운트 -->
 			
 		</div>
-		<div class="congrat">
+		<div class="mypageBox lastbox">
 			<h5>${memberInfo.member_name }님 환영합니다!</h5>
 		</div>
 			

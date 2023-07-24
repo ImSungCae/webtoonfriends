@@ -26,6 +26,14 @@
 	    ]]>
 	</select>
 	
+	<!-- 회원 수 카운트 -->
+	<select id="membersLen" resultType="int">
+        <![CDATA[
+         select count(*) from t_shop_member
+	    ]]>
+	</select>
+	
+	
 	<!-- 주문 건수 카운트 -->
 	<select id="ordersLen" resultType="int">
         <![CDATA[

@@ -24,6 +24,7 @@ CREATE TABLE t_shop_member(
 -- create t_shop_goods
 --------------------------------------------------------
 
+
 CREATE TABLE t_shop_goods(
     goods_id NUMBER(20) primary key,
     goods_sort VARCHAR2(50),
@@ -32,7 +33,8 @@ CREATE TABLE t_shop_goods(
     goods_price NUMBER(10),
     goods_delivery_price NUMBER(5),
     goods_delivery_date DATE,
-    goods_status varchar(50)
+    goods_status varchar(50),
+    goods_creDate DATE DEFAULT sysdate
 );
 
 --------------------------------------------------------
@@ -90,60 +92,60 @@ CREATE TABLE t_shop_order(
 -- insert t_goods_image
 --------------------------------------------------------
 
-insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(300,001,'ÀÚÀ¯Çü ¾ÆÅ©¸± Å°¸µ (Åõ¸í)_¸ŞÀÎ.jpg','admin','main_image',TO_DATE('22/10/16','RR/MM/DD'));
-insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(301,001,'ÀÚÀ¯Çü ¾ÆÅ©¸± Å°¸µ (Åõ¸í)_¼­ºê1.jpg','admin','sub_image1',TO_DATE('22/10/16','RR/MM/DD'));
-insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(302,002,'È­»ê±ÍÈ¯ ¾ÆÀÌÆù ÇÏµåÄÉÀÌ½º_¸ŞÀÎ.jpg','admin','main_image',TO_DATE('22/10/16','RR/MM/DD'));
-insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(303,002,'È­»ê±ÍÈ¯ ¾ÆÀÌÆù ÇÏµåÄÉÀÌ½º_¼­ºê1.jpg','admin','sub_image1',TO_DATE('22/10/16','RR/MM/DD'));
-insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(304,003,'È­»ê±ÍÈ¯ °¶·°½Ã ÇÏµåÄÉÀÌ½º_¸ŞÀÎ.jpg','admin','main_image',TO_DATE('22/10/16','RR/MM/DD'));
-insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(305,003,'È­»ê±ÍÈ¯ °¶·°½Ã ÇÏµåÄÉÀÌ½º_¼­ºê1.jpg','admin','sub_image1',TO_DATE('22/10/16','RR/MM/DD'));
-insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(306,004,'È­»ê±ÍÈ¯ ¸°³Ù ±×·¹ÀÌ ¿¡ÄÚ¹é_¸ŞÀÎ.jpg','admin','main_image',TO_DATE('22/10/16','RR/MM/DD'));
-insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(307,004,'È­»ê±ÍÈ¯ ¸°³Ù ±×·¹ÀÌ ¿¡ÄÚ¹é_¼­ºê1.jpg','admin','sub_image1',TO_DATE('22/10/16','RR/MM/DD'));
-insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(308,005,'¹°À§ÀÇ ¿ì¸® ¾ÆÅ©¸± Å°¸µ A_¸ŞÀÎ.jpg','admin','main_image',TO_DATE('22/10/17','RR/MM/DD'));
-insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(309,005,'¹°À§ÀÇ ¿ì¸® ¾ÆÅ©¸± Å°¸µ A_¼­ºê1.jpg','admin','sub_image1',TO_DATE('22/10/17','RR/MM/DD'));
-insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(310,006,'¹°À§ÀÇ ¿ì¸® ¾ÆÅ©¸± Å°¸µ B_¸ŞÀÎ.jpg','admin','main_image',TO_DATE('22/10/17','RR/MM/DD'));
-insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(311,006,'¹°À§ÀÇ ¿ì¸® ¾ÆÅ©¸± Å°¸µ B_¼­ºê1.jpg','admin','sub_image1',TO_DATE('22/10/17','RR/MM/DD'));
-insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(312,007,'¹°À§ÀÇ ¿ì¸® ÀÚÀ¯Çü ½ºÆ¼Ä¿_¸ŞÀÎ.jpg','admin','main_image',TO_DATE('22/10/17','RR/MM/DD'));
-insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(313,007,'¹°À§ÀÇ ¿ì¸® ÀÚÀ¯Çü ½ºÆ¼Ä¿_¼­ºê1.jpg','admin','sub_image1',TO_DATE('22/10/17','RR/MM/DD'));
-insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(314,008,'¹°À§ÀÇ ¿ì¸® A5 ³ëÆ®_¸ŞÀÎ.jpg','admin','main_image',TO_DATE('22/10/17','RR/MM/DD'));
-insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(315,008,'¹°À§ÀÇ ¿ì¸® A5 ³ëÆ®_¼­ºê1.jpg','admin','sub_image1',TO_DATE('22/10/17','RR/MM/DD'));
-insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(316,009,'¾ğ´ö À§ÀÇ Á¦ÀÓ½º ½º¸¶Æ®Åå_¸ŞÀÎ.jpg','admin','main_image',TO_DATE('22/10/18','RR/MM/DD'));
-insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(317,009,'¾ğ´ö À§ÀÇ Á¦ÀÓ½º ½º¸¶Æ®Åå_¼­ºê1.jpg','admin','sub_image1',TO_DATE('22/10/18','RR/MM/DD'));
-insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(318,010,'¾ğ´ö À§ÀÇ Á¦ÀÓ½º Æù½ºÆ®·¦_¸ŞÀÎ.jpg','admin','main_image',TO_DATE('22/10/18','RR/MM/DD'));
-insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(319,010,'¾ğ´ö À§ÀÇ Á¦ÀÓ½º Æù½ºÆ®·¦_¼­ºê1.jpg','admin','sub_image1',TO_DATE('22/10/18','RR/MM/DD'));
-insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(320,011,'¾ğ´ö À§ÀÇ Á¦ÀÓ½º ¾ÆÀÌÆù ÇÏµå ÄÉÀÌ½º_¸ŞÀÎ.jpg','admin','main_image',TO_DATE('22/10/18','RR/MM/DD'));
-insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(321,011,'¾ğ´ö À§ÀÇ Á¦ÀÓ½º ¾ÆÀÌÆù ÇÏµå ÄÉÀÌ½º_¼­ºê1.jpg','admin','sub_image1',TO_DATE('22/10/18','RR/MM/DD'));
-insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(322,012,'¾ğ´ö À§ÀÇ Á¦ÀÓ½º °¶·°½Ã ÇÏµå ÄÉÀÌ½º_¸ŞÀÎ.jpg','admin','main_image',TO_DATE('22/10/18','RR/MM/DD'));
-insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(323,012,'¾ğ´ö À§ÀÇ Á¦ÀÓ½º °¶·°½Ã ÇÏµå ÄÉÀÌ½º_¼­ºê1.jpg','admin','sub_image1',TO_DATE('22/10/18','RR/MM/DD'));
-insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(324,013,'¹Ù¸¥¿¬¾Ö ±æÀâÀÌ Æ¼¼ÅÃ÷ A_¸ŞÀÎ.jpg','admin','main_image',TO_DATE('22/10/19','RR/MM/DD'));
-insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(325,013,'¹Ù¸¥¿¬¾Ö ±æÀâÀÌ Æ¼¼ÅÃ÷ A_¼­ºê1.jpg','admin','sub_image1',TO_DATE('22/10/19','RR/MM/DD'));
-insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(326,014,'¹Ù¸¥¿¬¾Ö ±æÀâÀÌ Æ¼¼ÅÃ÷ B_¸ŞÀÎ.jpg','admin','main_image',TO_DATE('22/10/19','RR/MM/DD'));
-insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(327,014,'¹Ù¸¥¿¬¾Ö ±æÀâÀÌ Æ¼¼ÅÃ÷ B_¼­ºê1.jpg','admin','sub_image1',TO_DATE('22/10/19','RR/MM/DD'));
-insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(328,015,'¹Ù¸¥¿¬¾Ö ±æÀâÀÌ ¸°³Ù ±×·¹ÀÌ ¿¡ÄÚ¹é_¸ŞÀÎ.jpg','admin','main_image',TO_DATE('22/10/19','RR/MM/DD'));
-insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(329,015,'¹Ù¸¥¿¬¾Ö ±æÀâÀÌ ¸°³Ù ±×·¹ÀÌ ¿¡ÄÚ¹é_¼­ºê1.jpg','admin','sub_image1',TO_DATE('22/10/19','RR/MM/DD'));
-insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(330,016,'¹Ù¸¥¿¬¾Ö ±æÀâÀÌ ¼¼·Î ÆĞºê¸¯ Æ÷½ºÅÍ_¸ŞÀÎ.jpg','admin','main_image',TO_DATE('22/10/19','RR/MM/DD'));
-insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(331,016,'¹Ù¸¥¿¬¾Ö ±æÀâÀÌ ¼¼·Î ÆĞºê¸¯ Æ÷½ºÅÍ_¼­ºê1.jpg','admin','sub_image1',TO_DATE('22/10/19','RR/MM/DD'));
+insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(300,001,'ììœ í˜• ì•„í¬ë¦´ í‚¤ë§ (íˆ¬ëª…)_ë©”ì¸.jpg','admin','main_image',TO_DATE('22/10/16','RR/MM/DD'));
+insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(301,001,'ììœ í˜• ì•„í¬ë¦´ í‚¤ë§ (íˆ¬ëª…)_ì„œë¸Œ1.jpg','admin','sub_image1',TO_DATE('22/10/16','RR/MM/DD'));
+insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(302,002,'í™”ì‚°ê·€í™˜ ì•„ì´í° í•˜ë“œì¼€ì´ìŠ¤_ë©”ì¸.jpg','admin','main_image',TO_DATE('22/10/16','RR/MM/DD'));
+insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(303,002,'í™”ì‚°ê·€í™˜ ì•„ì´í° í•˜ë“œì¼€ì´ìŠ¤_ì„œë¸Œ1.jpg','admin','sub_image1',TO_DATE('22/10/16','RR/MM/DD'));
+insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(304,003,'í™”ì‚°ê·€í™˜ ê°¤ëŸ­ì‹œ í•˜ë“œì¼€ì´ìŠ¤_ë©”ì¸.jpg','admin','main_image',TO_DATE('22/10/16','RR/MM/DD'));
+insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(305,003,'í™”ì‚°ê·€í™˜ ê°¤ëŸ­ì‹œ í•˜ë“œì¼€ì´ìŠ¤_ì„œë¸Œ1.jpg','admin','sub_image1',TO_DATE('22/10/16','RR/MM/DD'));
+insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(306,004,'í™”ì‚°ê·€í™˜ ë¦°ë„¨ ê·¸ë ˆì´ ì—ì½”ë°±_ë©”ì¸.jpg','admin','main_image',TO_DATE('22/10/16','RR/MM/DD'));
+insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(307,004,'í™”ì‚°ê·€í™˜ ë¦°ë„¨ ê·¸ë ˆì´ ì—ì½”ë°±_ì„œë¸Œ1.jpg','admin','sub_image1',TO_DATE('22/10/16','RR/MM/DD'));
+insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(308,005,'ë¬¼ìœ„ì˜ ìš°ë¦¬ ì•„í¬ë¦´ í‚¤ë§ A_ë©”ì¸.jpg','admin','main_image',TO_DATE('22/10/17','RR/MM/DD'));
+insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(309,005,'ë¬¼ìœ„ì˜ ìš°ë¦¬ ì•„í¬ë¦´ í‚¤ë§ A_ì„œë¸Œ1.jpg','admin','sub_image1',TO_DATE('22/10/17','RR/MM/DD'));
+insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(310,006,'ë¬¼ìœ„ì˜ ìš°ë¦¬ ì•„í¬ë¦´ í‚¤ë§ B_ë©”ì¸.jpg','admin','main_image',TO_DATE('22/10/17','RR/MM/DD'));
+insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(311,006,'ë¬¼ìœ„ì˜ ìš°ë¦¬ ì•„í¬ë¦´ í‚¤ë§ B_ì„œë¸Œ1.jpg','admin','sub_image1',TO_DATE('22/10/17','RR/MM/DD'));
+insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(312,007,'ë¬¼ìœ„ì˜ ìš°ë¦¬ ììœ í˜• ìŠ¤í‹°ì»¤_ë©”ì¸.jpg','admin','main_image',TO_DATE('22/10/17','RR/MM/DD'));
+insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(313,007,'ë¬¼ìœ„ì˜ ìš°ë¦¬ ììœ í˜• ìŠ¤í‹°ì»¤_ì„œë¸Œ1.jpg','admin','sub_image1',TO_DATE('22/10/17','RR/MM/DD'));
+insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(314,008,'ë¬¼ìœ„ì˜ ìš°ë¦¬ A5 ë…¸íŠ¸_ë©”ì¸.jpg','admin','main_image',TO_DATE('22/10/17','RR/MM/DD'));
+insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(315,008,'ë¬¼ìœ„ì˜ ìš°ë¦¬ A5 ë…¸íŠ¸_ì„œë¸Œ1.jpg','admin','sub_image1',TO_DATE('22/10/17','RR/MM/DD'));
+insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(316,009,'ì–¸ë• ìœ„ì˜ ì œì„ìŠ¤ ìŠ¤ë§ˆíŠ¸í†¡_ë©”ì¸.jpg','admin','main_image',TO_DATE('22/10/18','RR/MM/DD'));
+insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(317,009,'ì–¸ë• ìœ„ì˜ ì œì„ìŠ¤ ìŠ¤ë§ˆíŠ¸í†¡_ì„œë¸Œ1.jpg','admin','sub_image1',TO_DATE('22/10/18','RR/MM/DD'));
+insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(318,010,'ì–¸ë• ìœ„ì˜ ì œì„ìŠ¤ í°ìŠ¤íŠ¸ë©_ë©”ì¸.jpg','admin','main_image',TO_DATE('22/10/18','RR/MM/DD'));
+insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(319,010,'ì–¸ë• ìœ„ì˜ ì œì„ìŠ¤ í°ìŠ¤íŠ¸ë©_ì„œë¸Œ1.jpg','admin','sub_image1',TO_DATE('22/10/18','RR/MM/DD'));
+insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(320,011,'ì–¸ë• ìœ„ì˜ ì œì„ìŠ¤ ì•„ì´í° í•˜ë“œ ì¼€ì´ìŠ¤_ë©”ì¸.jpg','admin','main_image',TO_DATE('22/10/18','RR/MM/DD'));
+insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(321,011,'ì–¸ë• ìœ„ì˜ ì œì„ìŠ¤ ì•„ì´í° í•˜ë“œ ì¼€ì´ìŠ¤_ì„œë¸Œ1.jpg','admin','sub_image1',TO_DATE('22/10/18','RR/MM/DD'));
+insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(322,012,'ì–¸ë• ìœ„ì˜ ì œì„ìŠ¤ ê°¤ëŸ­ì‹œ í•˜ë“œ ì¼€ì´ìŠ¤_ë©”ì¸.jpg','admin','main_image',TO_DATE('22/10/18','RR/MM/DD'));
+insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(323,012,'ì–¸ë• ìœ„ì˜ ì œì„ìŠ¤ ê°¤ëŸ­ì‹œ í•˜ë“œ ì¼€ì´ìŠ¤_ì„œë¸Œ1.jpg','admin','sub_image1',TO_DATE('22/10/18','RR/MM/DD'));
+insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(324,013,'ë°”ë¥¸ì—°ì•  ê¸¸ì¡ì´ í‹°ì…”ì¸  A_ë©”ì¸.jpg','admin','main_image',TO_DATE('22/10/19','RR/MM/DD'));
+insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(325,013,'ë°”ë¥¸ì—°ì•  ê¸¸ì¡ì´ í‹°ì…”ì¸  A_ì„œë¸Œ1.jpg','admin','sub_image1',TO_DATE('22/10/19','RR/MM/DD'));
+insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(326,014,'ë°”ë¥¸ì—°ì•  ê¸¸ì¡ì´ í‹°ì…”ì¸  B_ë©”ì¸.jpg','admin','main_image',TO_DATE('22/10/19','RR/MM/DD'));
+insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(327,014,'ë°”ë¥¸ì—°ì•  ê¸¸ì¡ì´ í‹°ì…”ì¸  B_ì„œë¸Œ1.jpg','admin','sub_image1',TO_DATE('22/10/19','RR/MM/DD'));
+insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(328,015,'ë°”ë¥¸ì—°ì•  ê¸¸ì¡ì´ ë¦°ë„¨ ê·¸ë ˆì´ ì—ì½”ë°±_ë©”ì¸.jpg','admin','main_image',TO_DATE('22/10/19','RR/MM/DD'));
+insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(329,015,'ë°”ë¥¸ì—°ì•  ê¸¸ì¡ì´ ë¦°ë„¨ ê·¸ë ˆì´ ì—ì½”ë°±_ì„œë¸Œ1.jpg','admin','sub_image1',TO_DATE('22/10/19','RR/MM/DD'));
+insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(330,016,'ë°”ë¥¸ì—°ì•  ê¸¸ì¡ì´ ì„¸ë¡œ íŒ¨ë¸Œë¦­ í¬ìŠ¤í„°_ë©”ì¸.jpg','admin','main_image',TO_DATE('22/10/19','RR/MM/DD'));
+insert into t_goods_image (image_id,goods_id,filename,reg_id,filetype,credate) VALUES(331,016,'ë°”ë¥¸ì—°ì•  ê¸¸ì¡ì´ ì„¸ë¡œ íŒ¨ë¸Œë¦­ í¬ìŠ¤í„°_ì„œë¸Œ1.jpg','admin','sub_image1',TO_DATE('22/10/19','RR/MM/DD'));
 
 
 --------------------------------------------------------
 -- insert t_shop_goods
 --------------------------------------------------------
 
-insert into t_shop_goods (goods_id,goods_sort,goods_title,goods_writer_intro,goods_price,goods_delivery_price,goods_delivery_date,goods_status) VALUES (1,'È­»ê±ÍÈ¯','ÀÚÀ¯Çü ¾ÆÅ©¸± Å°¸µ (Åõ¸í)','ÀÚÀ¯Çü ¾ÆÅ©¸± Å°¸µ (Åõ¸í)',10000,3000,TO_DATE('22/10/16','RR/MM/DD'),'bestgoods');
-insert into t_shop_goods (goods_id,goods_sort,goods_title,goods_writer_intro,goods_price,goods_delivery_price,goods_delivery_date,goods_status) VALUES (2,'È­»ê±ÍÈ¯','È­»ê±ÍÈ¯ ¾ÆÀÌÆù ÇÏµåÄÉÀÌ½º','¾ÆÀÌÆù 13 ÇÏµåÄÉÀÌ½º (À¯±¤)',18000,3000,TO_DATE('22/10/16','RR/MM/DD'),NULL);
-insert into t_shop_goods (goods_id,goods_sort,goods_title,goods_writer_intro,goods_price,goods_delivery_price,goods_delivery_date,goods_status) VALUES (3,'È­»ê±ÍÈ¯','È­»ê±ÍÈ¯ °¶·°½Ã ÇÏµåÄÉÀÌ½º','°¶·°½Ã S21 ÇÏµåÄÉÀÌ½º (¹«±¤)',18000,3000,TO_DATE('22/10/16','RR/MM/DD'),'bestgoods');
-insert into t_shop_goods (goods_id,goods_sort,goods_title,goods_writer_intro,goods_price,goods_delivery_price,goods_delivery_date,goods_status) VALUES (4,'È­»ê±ÍÈ¯','È­»ê±ÍÈ¯ ¸°³Ù ±×·¹ÀÌ ¿¡ÄÚ¹é','¸°³Ù ±×·¹ÀÌ ¿¡ÄÚ¹é',25000,3000,TO_DATE('22/10/16','RR/MM/DD'),'newgoods');
-insert into t_shop_goods (goods_id,goods_sort,goods_title,goods_writer_intro,goods_price,goods_delivery_price,goods_delivery_date,goods_status) VALUES (5,'¹°À§ÀÇ¿ì¸®','¹°À§ÀÇ ¿ì¸® ¾ÆÅ©¸± Å°¸µ A','ÀÚÀ¯Çü ¾ÆÅ©¸± Å°¸µ (Åõ¸í)',11400,3000,TO_DATE('22/10/17','RR/MM/DD'),'bestgoods');
-insert into t_shop_goods (goods_id,goods_sort,goods_title,goods_writer_intro,goods_price,goods_delivery_price,goods_delivery_date,goods_status) VALUES (6,'¹°À§ÀÇ¿ì¸®','¹°À§ÀÇ ¿ì¸® ¾ÆÅ©¸± Å°¸µ B','ÀÚÀ¯Çü ¾ÆÅ©¸± Å°¸µ (Åõ¸í)',11400,3000,TO_DATE('22/10/17','RR/MM/DD'),'bestgoods');
-insert into t_shop_goods (goods_id,goods_sort,goods_title,goods_writer_intro,goods_price,goods_delivery_price,goods_delivery_date,goods_status) VALUES (7,'¹°À§ÀÇ¿ì¸®','¹°À§ÀÇ ¿ì¸® ÀÚÀ¯Çü ½ºÆ¼Ä¿','ÀÚÀ¯Çü ½ºÆ¼Ä¿ - ¾ÆÆ®Áö',3000,3000,TO_DATE('22/10/17','RR/MM/DD'),NULL);
-insert into t_shop_goods (goods_id,goods_sort,goods_title,goods_writer_intro,goods_price,goods_delivery_price,goods_delivery_date,goods_status) VALUES (8,'¹°À§ÀÇ¿ì¸®','¹°À§ÀÇ ¿ì¸® A5 ³ëÆ®','A5 ³ëÆ®',3200,3000,TO_DATE('22/10/17','RR/MM/DD'),'newgoods');
-insert into t_shop_goods (goods_id,goods_sort,goods_title,goods_writer_intro,goods_price,goods_delivery_price,goods_delivery_date,goods_status) VALUES (9,'¾ğ´öÀ§ÀÇÁ¦ÀÓ½º','¾ğ´ö À§ÀÇ Á¦ÀÓ½º ½º¸¶Æ®Åå','½º¸¶Æ®Åå È­ÀÌÆ® (¹«±¤/À¯±¤)',10000,3000,TO_DATE('22/10/18','RR/MM/DD'),'bestgoods');
-insert into t_shop_goods (goods_id,goods_sort,goods_title,goods_writer_intro,goods_price,goods_delivery_price,goods_delivery_date,goods_status) VALUES (10,'¾ğ´öÀ§ÀÇÁ¦ÀÓ½º','¾ğ´ö À§ÀÇ Á¦ÀÓ½º Æù½ºÆ®·¦','Æù ½ºÆ®·¦ (¾ÆÀÌÆù ¿¹½Ã)',11000,3000,TO_DATE('22/10/18','RR/MM/DD'),NULL);
-insert into t_shop_goods (goods_id,goods_sort,goods_title,goods_writer_intro,goods_price,goods_delivery_price,goods_delivery_date,goods_status) VALUES (11,'¾ğ´öÀ§ÀÇÁ¦ÀÓ½º','¾ğ´ö À§ÀÇ Á¦ÀÓ½º ¾ÆÀÌÆù ÇÏµå ÄÉÀÌ½º','¾ÆÀÌÆù 14 PRO ÇÏµåÄÉÀÌ½º (¹«±¤)',18000,3000,TO_DATE('22/10/18','RR/MM/DD'),NULL);
-insert into t_shop_goods (goods_id,goods_sort,goods_title,goods_writer_intro,goods_price,goods_delivery_price,goods_delivery_date,goods_status) VALUES (12,'¾ğ´öÀ§ÀÇÁ¦ÀÓ½º','¾ğ´ö À§ÀÇ Á¦ÀÓ½º °¶·°½Ã ÇÏµå ÄÉÀÌ½º','°¶·°½Ã S21 ÇÏµåÄÉÀÌ½º (¹«±¤)',18000,3000,TO_DATE('22/10/18','RR/MM/DD'),'newgoods');
-insert into t_shop_goods (goods_id,goods_sort,goods_title,goods_writer_intro,goods_price,goods_delivery_price,goods_delivery_date,goods_status) VALUES (13,'¹Ù¸¥¿¬¾Ö±æÀâÀÌ','¹Ù¸¥¿¬¾Ö ±æÀâÀÌ Æ¼¼ÅÃ÷ A','±æ´Ü 76600 ¸µ°Å Æ¼¼ÅÃ÷',37000,3000,TO_DATE('22/10/19','RR/MM/DD'),NULL);
-insert into t_shop_goods (goods_id,goods_sort,goods_title,goods_writer_intro,goods_price,goods_delivery_price,goods_delivery_date,goods_status) VALUES (14,'¹Ù¸¥¿¬¾Ö±æÀâÀÌ','¹Ù¸¥¿¬¾Ö ±æÀâÀÌ Æ¼¼ÅÃ÷ B','ÄÄÆ÷Æ® ÄÃ·¯Áî 1717',29000,3000,TO_DATE('22/10/19','RR/MM/DD'),'bestgoods');
-insert into t_shop_goods (goods_id,goods_sort,goods_title,goods_writer_intro,goods_price,goods_delivery_price,goods_delivery_date,goods_status) VALUES (15,'¹Ù¸¥¿¬¾Ö±æÀâÀÌ','¹Ù¸¥¿¬¾Ö ±æÀâÀÌ ¸°³Ù ±×·¹ÀÌ ¿¡ÄÚ¹é','¸°³Ù ±×·¹ÀÌ ¿¡ÄÚ¹é',32000,3000,TO_DATE('22/10/19','RR/MM/DD'),NULL);
-insert into t_shop_goods (goods_id,goods_sort,goods_title,goods_writer_intro,goods_price,goods_delivery_price,goods_delivery_date,goods_status) VALUES (16,'¹Ù¸¥¿¬¾Ö±æÀâÀÌ','¹Ù¸¥¿¬¾Ö ±æÀâÀÌ ¼¼·Î ÆĞºê¸¯ Æ÷½ºÅÍ','¼¼·Î ÆĞºê¸¯ Æ÷½ºÅÍ (70X110)',26000,3000,TO_DATE('22/10/19','RR/MM/DD'),'newgoods');
+insert into t_shop_goods (goods_id,goods_sort,goods_title,goods_writer_intro,goods_price,goods_delivery_price,goods_delivery_date,goods_status) VALUES (1,'í™”ì‚°ê·€í™˜','ììœ í˜• ì•„í¬ë¦´ í‚¤ë§ (íˆ¬ëª…)','ììœ í˜• ì•„í¬ë¦´ í‚¤ë§ (íˆ¬ëª…)',10000,3000,TO_DATE('22/10/16','RR/MM/DD'),'bestgoods');
+insert into t_shop_goods (goods_id,goods_sort,goods_title,goods_writer_intro,goods_price,goods_delivery_price,goods_delivery_date,goods_status) VALUES (2,'í™”ì‚°ê·€í™˜','í™”ì‚°ê·€í™˜ ì•„ì´í° í•˜ë“œì¼€ì´ìŠ¤','ì•„ì´í° 13 í•˜ë“œì¼€ì´ìŠ¤ (ìœ ê´‘)',18000,3000,TO_DATE('22/10/16','RR/MM/DD'),NULL);
+insert into t_shop_goods (goods_id,goods_sort,goods_title,goods_writer_intro,goods_price,goods_delivery_price,goods_delivery_date,goods_status) VALUES (3,'í™”ì‚°ê·€í™˜','í™”ì‚°ê·€í™˜ ê°¤ëŸ­ì‹œ í•˜ë“œì¼€ì´ìŠ¤','ê°¤ëŸ­ì‹œ S21 í•˜ë“œì¼€ì´ìŠ¤ (ë¬´ê´‘)',18000,3000,TO_DATE('22/10/16','RR/MM/DD'),'bestgoods');
+insert into t_shop_goods (goods_id,goods_sort,goods_title,goods_writer_intro,goods_price,goods_delivery_price,goods_delivery_date,goods_status) VALUES (4,'í™”ì‚°ê·€í™˜','í™”ì‚°ê·€í™˜ ë¦°ë„¨ ê·¸ë ˆì´ ì—ì½”ë°±','ë¦°ë„¨ ê·¸ë ˆì´ ì—ì½”ë°±',25000,3000,TO_DATE('22/10/16','RR/MM/DD'),'newgoods');
+insert into t_shop_goods (goods_id,goods_sort,goods_title,goods_writer_intro,goods_price,goods_delivery_price,goods_delivery_date,goods_status) VALUES (5,'ë¬¼ìœ„ì˜ìš°ë¦¬','ë¬¼ìœ„ì˜ ìš°ë¦¬ ì•„í¬ë¦´ í‚¤ë§ A','ììœ í˜• ì•„í¬ë¦´ í‚¤ë§ (íˆ¬ëª…)',11400,3000,TO_DATE('22/10/17','RR/MM/DD'),'bestgoods');
+insert into t_shop_goods (goods_id,goods_sort,goods_title,goods_writer_intro,goods_price,goods_delivery_price,goods_delivery_date,goods_status) VALUES (6,'ë¬¼ìœ„ì˜ìš°ë¦¬','ë¬¼ìœ„ì˜ ìš°ë¦¬ ì•„í¬ë¦´ í‚¤ë§ B','ììœ í˜• ì•„í¬ë¦´ í‚¤ë§ (íˆ¬ëª…)',11400,3000,TO_DATE('22/10/17','RR/MM/DD'),'bestgoods');
+insert into t_shop_goods (goods_id,goods_sort,goods_title,goods_writer_intro,goods_price,goods_delivery_price,goods_delivery_date,goods_status) VALUES (7,'ë¬¼ìœ„ì˜ìš°ë¦¬','ë¬¼ìœ„ì˜ ìš°ë¦¬ ììœ í˜• ìŠ¤í‹°ì»¤','ììœ í˜• ìŠ¤í‹°ì»¤ - ì•„íŠ¸ì§€',3000,3000,TO_DATE('22/10/17','RR/MM/DD'),NULL);
+insert into t_shop_goods (goods_id,goods_sort,goods_title,goods_writer_intro,goods_price,goods_delivery_price,goods_delivery_date,goods_status) VALUES (8,'ë¬¼ìœ„ì˜ìš°ë¦¬','ë¬¼ìœ„ì˜ ìš°ë¦¬ A5 ë…¸íŠ¸','A5 ë…¸íŠ¸',3200,3000,TO_DATE('22/10/17','RR/MM/DD'),'newgoods');
+insert into t_shop_goods (goods_id,goods_sort,goods_title,goods_writer_intro,goods_price,goods_delivery_price,goods_delivery_date,goods_status) VALUES (9,'ì–¸ë•ìœ„ì˜ì œì„ìŠ¤','ì–¸ë• ìœ„ì˜ ì œì„ìŠ¤ ìŠ¤ë§ˆíŠ¸í†¡','ìŠ¤ë§ˆíŠ¸í†¡ í™”ì´íŠ¸ (ë¬´ê´‘/ìœ ê´‘)',10000,3000,TO_DATE('22/10/18','RR/MM/DD'),'bestgoods');
+insert into t_shop_goods (goods_id,goods_sort,goods_title,goods_writer_intro,goods_price,goods_delivery_price,goods_delivery_date,goods_status) VALUES (10,'ì–¸ë•ìœ„ì˜ì œì„ìŠ¤','ì–¸ë• ìœ„ì˜ ì œì„ìŠ¤ í°ìŠ¤íŠ¸ë©','í° ìŠ¤íŠ¸ë© (ì•„ì´í° ì˜ˆì‹œ)',11000,3000,TO_DATE('22/10/18','RR/MM/DD'),NULL);
+insert into t_shop_goods (goods_id,goods_sort,goods_title,goods_writer_intro,goods_price,goods_delivery_price,goods_delivery_date,goods_status) VALUES (11,'ì–¸ë•ìœ„ì˜ì œì„ìŠ¤','ì–¸ë• ìœ„ì˜ ì œì„ìŠ¤ ì•„ì´í° í•˜ë“œ ì¼€ì´ìŠ¤','ì•„ì´í° 14 PRO í•˜ë“œì¼€ì´ìŠ¤ (ë¬´ê´‘)',18000,3000,TO_DATE('22/10/18','RR/MM/DD'),NULL);
+insert into t_shop_goods (goods_id,goods_sort,goods_title,goods_writer_intro,goods_price,goods_delivery_price,goods_delivery_date,goods_status) VALUES (12,'ì–¸ë•ìœ„ì˜ì œì„ìŠ¤','ì–¸ë• ìœ„ì˜ ì œì„ìŠ¤ ê°¤ëŸ­ì‹œ í•˜ë“œ ì¼€ì´ìŠ¤','ê°¤ëŸ­ì‹œ S21 í•˜ë“œì¼€ì´ìŠ¤ (ë¬´ê´‘)',18000,3000,TO_DATE('22/10/18','RR/MM/DD'),'newgoods');
+insert into t_shop_goods (goods_id,goods_sort,goods_title,goods_writer_intro,goods_price,goods_delivery_price,goods_delivery_date,goods_status) VALUES (13,'ë°”ë¥¸ì—°ì• ê¸¸ì¡ì´','ë°”ë¥¸ì—°ì•  ê¸¸ì¡ì´ í‹°ì…”ì¸  A','ê¸¸ë‹¨ 76600 ë§ê±° í‹°ì…”ì¸ ',37000,3000,TO_DATE('22/10/19','RR/MM/DD'),NULL);
+insert into t_shop_goods (goods_id,goods_sort,goods_title,goods_writer_intro,goods_price,goods_delivery_price,goods_delivery_date,goods_status) VALUES (14,'ë°”ë¥¸ì—°ì• ê¸¸ì¡ì´','ë°”ë¥¸ì—°ì•  ê¸¸ì¡ì´ í‹°ì…”ì¸  B','ì»´í¬íŠ¸ ì»¬ëŸ¬ì¦ˆ 1717',29000,3000,TO_DATE('22/10/19','RR/MM/DD'),'bestgoods');
+insert into t_shop_goods (goods_id,goods_sort,goods_title,goods_writer_intro,goods_price,goods_delivery_price,goods_delivery_date,goods_status) VALUES (15,'ë°”ë¥¸ì—°ì• ê¸¸ì¡ì´','ë°”ë¥¸ì—°ì•  ê¸¸ì¡ì´ ë¦°ë„¨ ê·¸ë ˆì´ ì—ì½”ë°±','ë¦°ë„¨ ê·¸ë ˆì´ ì—ì½”ë°±',32000,3000,TO_DATE('22/10/19','RR/MM/DD'),NULL);
+insert into t_shop_goods (goods_id,goods_sort,goods_title,goods_writer_intro,goods_price,goods_delivery_price,goods_delivery_date,goods_status) VALUES (16,'ë°”ë¥¸ì—°ì• ê¸¸ì¡ì´','ë°”ë¥¸ì—°ì•  ê¸¸ì¡ì´ ì„¸ë¡œ íŒ¨ë¸Œë¦­ í¬ìŠ¤í„°','ì„¸ë¡œ íŒ¨ë¸Œë¦­ í¬ìŠ¤í„° (70X110)',26000,3000,TO_DATE('22/10/19','RR/MM/DD'),'newgoods');
 
 
 drop sequence ORDER_SEQ_NUM;
@@ -159,7 +161,7 @@ drop sequence SEQ_ORDER_ID;
 --  DDL for Sequence SEQ_GOODS_ID
 --------------------------------------------------------
 
-   CREATE SEQUENCE  "SEQ_GOODS_ID"  MINVALUE 100 MAXVALUE 1000000 INCREMENT BY 1 START WITH 400 CACHE 20 ORDER  NOCYCLE ;
+   CREATE SEQUENCE  "SEQ_GOODS_ID"  MINVALUE 16 MAXVALUE 1000000 INCREMENT BY 1 START WITH 16 CACHE 20 ORDER  NOCYCLE ;
 --------------------------------------------------------
 --  DDL for Sequence SEQ_IMAGE_ID
 --------------------------------------------------------
@@ -177,11 +179,4 @@ insert into t_shop_member(member_id,
 				 					 member_pwd,
                                      member_name,
                                      hp1)
-							 values('admin','admin','°ü¸®ÀÚ','010');
-
-
-
-
-
-
-
+							 values('admin','admin','ê´€ë¦¬ì','010');
