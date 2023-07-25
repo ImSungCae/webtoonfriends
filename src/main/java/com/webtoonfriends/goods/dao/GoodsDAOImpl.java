@@ -26,6 +26,12 @@ public class GoodsDAOImpl implements GoodsDAO {
 	}
 
 	@Override
+	public List<String> selectKeywordSearch(String keyword) throws DataAccessException {
+		return sqlSession.selectList("mapper.goods.selectKeywordSearch",keyword);
+	}
+
+	
+	@Override
 	public List<GoodsVO> selectGoodsBySearchWord(String searchWord) throws DataAccessException {
 		return sqlSession.selectList("mapper.goods.selectGoodsBySearchWord",searchWord);
 	}
@@ -39,6 +45,7 @@ public class GoodsDAOImpl implements GoodsDAO {
 	public List<ImageFileVO> selectGoodsDetailImage(String goods_id) throws DataAccessException {
 		return sqlSession.selectList("mapper.goods.selectGoodsDetailImage",goods_id);
 	}
+
 
 	
 	

@@ -31,7 +31,7 @@ import com.webtoonfriends.member.vo.MemberVO;
 @Controller("adminGoodsController")
 @RequestMapping(value = "/admin/goods")
 public class AdminGoodsControllerImpl extends BaseController implements AdminGoodsController {
-	private static final String CURR_IMAGE_REPO_PATH = "C:\\\\webtoonfriends_repo\\\\file_repo";
+	private static final String CURR_IMAGE_REPO_PATH = "C:\\webtoonfriends_repo\\file_repo";
 	@Autowired
 	private AdminGoodsService adminGoodsService;
 
@@ -42,7 +42,6 @@ public class AdminGoodsControllerImpl extends BaseController implements AdminGoo
 		ModelAndView mav = new ModelAndView(viewName);
 		HttpSession session = request.getSession();
 		session = request.getSession();
-		session.setAttribute("side_menu", "admin_mode");
 
 		String fixedSearchPeriod = dateMap.get("fixedSearchPeriod");
 		String beginDate = null, endDate = null;
@@ -322,7 +321,7 @@ public class AdminGoodsControllerImpl extends BaseController implements AdminGoo
 	}
 
 	@Override
-	@RequestMapping(value = "/deleteGoods.do", method = { RequestMethod.POST })
+	@RequestMapping(value = "/deleteGoods.do", method = { RequestMethod.POST,RequestMethod.GET })
 	public ModelAndView deleteGoods(@RequestParam("goods_id") int goods_id, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 

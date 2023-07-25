@@ -59,6 +59,7 @@
 					  			values(
 					  			      #{goods_id},
 					  			      #{goods_sort},
+					  			      #{goods_title},
 					  			      #{goods_writer_intro},
 					  			      #{goods_price},
 					  			      #{goods_delivery_price},

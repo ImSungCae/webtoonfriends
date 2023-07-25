@@ -70,7 +70,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td>
+						<td class="card_select">
 							<strong>카드 선택<strong>:&nbsp;&nbsp;&nbsp;
 							  <select id="card_com_name" name="card_com_name" onchange="selectValue(this, this.value)">
 									<option value="삼성" selected>삼성</option>
@@ -82,8 +82,8 @@
 									<option value="BC">BC</option>
 									<option value="시티">시티</option>
 									<option value="NH농협">NH농협</option>
-							</select>
-							<strong>할부 기간:<strong>  &nbsp;&nbsp;&nbsp;
+							</select><br>
+							<strong>할부 기간:<strong>  &nbsp;&nbsp;
 							<select id="card_pay_month" name="card_pay_month" onchange="selectValue(this, this.value)">
 									<option value="일시불" selected>일시불</option>
 									<option value="2개월">2개월</option>

@@ -91,6 +91,8 @@ function readURL(input,preview) {
 					<select name="goods_status">
 						<option value="bestgoods">인기굿즈</option>
 						<option value="newgoods">신규굿즈</option>
+						<option value="on_sale">판매중</option>
+						<option value="buy_out">품절</option>
 					</select>
 					<input type="hidden" name="h_goods_status" value="${goods.goods_status }">
 				</td>

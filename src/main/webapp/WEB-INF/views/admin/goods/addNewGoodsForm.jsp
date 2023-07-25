@@ -17,7 +17,7 @@
 </script>
 
 
-<div class="detail_box">
+<div class="detail_box goods_form">
 	<h2>상품추가</h2>
 	<form name="frm_modify_goods" method="post"
 		enctype="multipart/form-data">
@@ -63,6 +63,8 @@
 				<td><select name="goods_status">
 						<option value="bestgoods">인기굿즈</option>
 						<option value="newgoods">신규굿즈</option>
+						<option value="on_sale">판매중</option>
+						<option value="buy_out">품절</option>
 				</select> <input type="hidden" name="h_goods_status"
 					></td>
 			</tr>
@@ -73,17 +75,17 @@
 								onchange="readURL(this,'preview${itemNum.count }');"> <input
 								type="hidden" name="image_id" value="${item.image_id }">
 								<img id="preview${itemNum.count }" width="150"
-								src="${contextPath}/download.do?goods_id=${item.goods_id}&fileName=${item.fileName}">
+								src="">
 							</td>
 			</tr>
-				<tr>
-					<td>상세 이미지 <input type="file" id="detail_image"
+				<tr id="${itemNum.count-1 }">
+					<td>상세 이미지${itemNum.count-1 } <input type="file" id="detail_image"
 						name="detail_image"
-						onchange="readURL(this,'preview${itemNum.count }');"> <input
+						onchange="readURL(this,'preview${itemNum.count-1 }');"> <input
 						type="hidden" name="image_id" value="${item.image_id }"> <img
-						id="preview${itemNum.count }" width="150"
+						id="preview${itemNum.count-1 }" width="150"
 						style="background-size: cover;"
-						src="${contextPath}/download.do?goods_id=${item.goods_id}&fileName=${item.fileName}">
+						src="">
 					</td>
 				</tr>
 

@@ -5,55 +5,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
-<script>
-
-function search_order_history(fixedSearchPeriod) {
-	var formObj = document.createElement("form");
-	var i_fixedSearch_period = document.createElement("input");
-	i_fixedSearch_period.name = "fixedSearchPeriod";
-	i_fixedSearch_period.value = fixedSearchPeriod;
-	formObj.appendChild(i_fixedSearch_period);
-	document.body.appendChild(formObj);
-	formObj.method = "get";
-	formObj.action = "${contextPath}/admin/member/adminMemberMain.do";
-	formObj.submit();
-}
-
-
-function fn_delete_member(member_id,del_yn) {
-	var member_id=member_id;
-	var del_yn=del_yn;
-	
-	//confirm단계를 거치고 사용자가 취소를 누를경우 삭제를 취소한다.
-	var answer=confirm("해당회원을 삭제하시겠습니까?");
-	if(answer==true){
-		$.ajax({
-			type : "post",
-			async : false,
-			url : "${contextPath}/mypage/deleteMember.do",
-			data : {
-				member_id:member_id,
-				del_yn:del_yn
-			},
-			success : function(data, textStatus) {
-				if(data.trim()=='delete_success'){
-					alert("삭제되었습니다.");
-					location.href="${contextPath}/admin/member/adminMemberMain.do";
-				}else if(data.trim()=='failed'){
-					alert("다시 시도해 주세요.");	
-				}
-			},
-			error : function(data, textStatus) {
-				alert("에러가 발생했습니다."+data);
-			},
-			complete : function(data, textStatus) {}
-		});
-	}
-}
-
-
-
-</script>
 
 
 <div class="detail_box">
@@ -141,5 +92,69 @@ function fn_delete_member(member_id,del_yn) {
 	</form>
 </div>
 
+
+
+<script>
+
+function search_order_history(fixedSearchPeriod) {
+	var formObj = document.createElement("form");
+	var i_fixedSearch_period = document.createElement("input");
+	i_fixedSearch_period.name = "fixedSearchPeriod";
+	i_fixedSearch_period.value = fixedSearchPeriod;
+	formObj.appendChild(i_fixedSearch_period);
+	document.body.appendChild(formObj);
+	formObj.method = "get";
+	formObj.action = "${contextPath}/admin/member/adminMemberMain.do";
+	formObj.submit();
+}
+
+//버튼식 상품조회 badge url에 따른 style변경
+if (window.location.href.includes("fixedSearchPeriod")) {
+	const badges = document.querySelectorAll(".badge");
+	for (b of badges){ b.classList.remove("active");}
+	//각 값이 url에 들어있을 경우 active된다.
+	if (window.location.href.includes("today")) {badges[0].classList.add("active");
+	} else if (window.location.href.includes("one_month")) {badges[1].classList.add("active");
+	}else if (window.location.href.includes("two_month")) {badges[2].classList.add("active");
+	}else if (window.location.href.includes("three_month")) {badges[3].classList.add("active");
+	}else if (window.location.href.includes("six_month")) {badges[4].classList.add("active");
+	}
+}
+
+
+function fn_delete_member(member_id,del_yn) {
+	var member_id=member_id;
+	var del_yn=del_yn;
+	
+	//confirm단계를 거치고 사용자가 취소를 누를경우 삭제를 취소한다.
+	var answer=confirm("해당회원을 삭제하시겠습니까?");
+	if(answer==true){
+		$.ajax({
+			type : "post",
+			async : false,
+			url : "${contextPath}/mypage/deleteMember.do",
+			data : {
+				member_id:member_id,
+				del_yn:del_yn
+			},
+			success : function(data, textStatus) {
+				if(data.trim()=='delete_success'){
+					alert("삭제되었습니다.");
+					location.href="${contextPath}/admin/member/adminMemberMain.do";
+				}else if(data.trim()=='failed'){
+					alert("다시 시도해 주세요.");	
+				}
+			},
+			error : function(data, textStatus) {
+				alert("에러가 발생했습니다."+data);
+			},
+			complete : function(data, textStatus) {}
+		});
+	}
+}
+
+
+
+</script>
 
 

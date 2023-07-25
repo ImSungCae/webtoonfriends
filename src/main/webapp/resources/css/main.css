@@ -152,6 +152,24 @@ header #head {
 header #head.active {
 	transform: translateY(-121px);
 }
+/* 헤더 검색 */
+
+#suggest{
+	position: absolute;
+	top: 100px;
+	transform:translateX(10%);
+	background-color: #fff;
+	padding: 20px;
+	border: 2px solid #00dc64;
+	line-height: 30px;
+	border-radius: 10px;
+}
+#suggest a{
+	font-size:14px;
+	color: #000;
+	font-weight: bold;
+}
+
 
 header #head #search {
 	box-sizing: border-box;
@@ -160,8 +178,14 @@ header #head #search {
 	padding: 10px 5px;
 	width: 450px;
 	display: flex;
-	align-items: center;
+	flex-wrap:nowrap;
+	flex-direction: column-reverse;
 	justify-content: space-around;
+}
+
+#search button{
+	background-color: #fff;
+	border:none;
 }
 
 header #head i {
@@ -198,7 +222,7 @@ header #head #category #suggestList {
 	font-weight: bold;
 }
 
-header #head #category #suggestList.d-none {
+.d-none{
 	display: none;
 }
 
@@ -215,6 +239,7 @@ header #head #category #suggestList a {
 	line-height: 50px;
 	color: #000;
 }
+
 
 /* 메인 슬라이드 */
 article>#slide {
@@ -401,9 +426,6 @@ article h3 {
 	margin-bottom: 40px;
 }
 
-.member .d-none {
-	display: none;
-}
 
 .allRequiredInputCheck {
 	font-size: 12px;
@@ -643,7 +665,9 @@ article h3 {
 	height: 600px;
 	padding: 80px 30px 0 0;
 	position: sticky;
+	width:100%;
 	top: 65px;
+	flex-grow: 1;
 }
 
 #goodsDetail .goods_info>p:first-of-type {
@@ -822,9 +846,6 @@ article h3 {
 	align-items: center;
 }
 
-.goods_info_box .d-none {
-	display: none;
-}
 
 #cart .allSelect {
 	margin: 10px 0;
@@ -948,7 +969,12 @@ article h3 {
 	font-size: 13px;
 	color: #fff;
 }
-
+.card_select{
+	padding: 10px;
+}
+.card_select select{
+	margin:10px 0;
+}
 .order_div {
 	position: sticky;
 	top: 100px;
@@ -982,9 +1008,6 @@ article h3 {
 	color: #000;
 }
 
-.order_div .order_goods .detail_info .d-none {
-	display: none;
-}
 
 .order_div>.order_info p {
 	font-size: 13px;
@@ -1068,6 +1091,7 @@ article h3 {
 	color: #fff;
 }
 
+
 /* 마이페이지 주문목록 */
 #order_detail>#history_search {
 	margin: 15px 0;
@@ -1079,9 +1103,11 @@ article h3 {
 	border-radius: 20px;
 	font-size: 13px;
 	margin-left: 7px;
-	color: #000;
 }
-
+.badge.active{
+	background-color: rgb(50,50,50);
+	color: #fff
+}
 #order_detail>.order_history_box {
 	border: 1px solid rgb(227, 227, 227);
 	border-radius: 10px;
@@ -1189,6 +1215,19 @@ article h3 {
 #admin_member button {
 	height: 25px;
 	border-color: #00dc64;
+}
+
+/* 관리자 주문 관리 */
+
+select.prepared{
+	background-color: yellow;
+}
+
+select.success{
+	background-color: lime;
+}
+select.danger{
+	background-color: orange;
 }
 
 #admin_order>div:first-of-type {
@@ -1322,10 +1361,17 @@ footer {
 }
 
 footer>.footer_inner {
-	margin: 0 auto;
+	margin: 100px auto 0;
+	padding:70px;
 	width: 950px;
 	height: 100%;
 	box-sizing: border-box;
 	font-size: 13px;
 	line-height: 18px;
+	display: flex;
+	gap:30px;
+	justify-content: space-evenly;
+}
+footer>.footer_inner a{
+	color: #000;
 }

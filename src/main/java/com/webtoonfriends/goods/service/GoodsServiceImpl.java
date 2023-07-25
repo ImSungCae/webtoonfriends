@@ -49,6 +49,11 @@ public class GoodsServiceImpl implements GoodsService {
 	}
 
 	@Override
+	public List<String> keywordSearch(String keyword) throws Exception {
+		return goodsDAO.selectKeywordSearch(keyword);
+	}
+	
+	@Override
 	public List<GoodsVO> searchGoods(String searchWord) throws Exception {
 		return goodsDAO.selectGoodsBySearchWord(searchWord);
 	}
@@ -64,4 +69,6 @@ public class GoodsServiceImpl implements GoodsService {
 		
 		return goodsMap;
 	}
+
+	
 }

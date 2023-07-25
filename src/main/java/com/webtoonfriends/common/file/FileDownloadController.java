@@ -25,11 +25,11 @@ public class FileDownloadController {
 		OutputStream out = response.getOutputStream();
 		String filePath=CURR_IMAGE_REPO_PATH+"\\"+goods_id+"\\"+fileName;
 		File image=new File(filePath);
-		fileName = URLEncoder.encode(fileName,"utf-8");
 
+		fileName = URLEncoder.encode(fileName,"utf-8");
+		FileInputStream in=new FileInputStream(image); 
 		response.setHeader("Cache-Control","no-cache");
 		response.addHeader("Content-disposition", "attachment; fileName="+fileName);
-		FileInputStream in=new FileInputStream(image); 
 		byte[] buffer=new byte[1024*8];
 		while(true){
 			int count=in.read(buffer); 

@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.webtoonfriends.admin.member.service.AdminMemberService;
@@ -25,7 +26,7 @@ public class AdminMemberControllerImpl extends BaseController implements AdminMe
 	private AdminMemberService adminMemberService;
 
 	@RequestMapping(value = "/adminMemberMain.do", method = { RequestMethod.POST, RequestMethod.GET })
-	public ModelAndView adminGoodsMain(Map<String, String> dateMap, HttpServletRequest request,
+	public ModelAndView adminGoodsMain(@RequestParam Map<String, String> dateMap, HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		String viewName=(String)request.getAttribute("viewName");
 		ModelAndView mav = new ModelAndView(viewName);

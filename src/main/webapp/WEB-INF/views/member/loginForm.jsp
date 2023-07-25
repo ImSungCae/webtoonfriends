@@ -2,17 +2,13 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
 <c:if test='${not empty message }'>
 	<script>
 	 window.onload=function(){alert("아이디나  비밀번호가 틀립니다. 다시 입력해주세요.");}
 	</script>
 </c:if>
-</head>
-<body>
+
+
 	<h3>로그인</h3>
 	<form action="${contextPath }/member/login.do" method="post"
 		id="loginForm" class="member">
@@ -61,5 +57,3 @@
 			}
 		}
 	</script>
-</body>
-</html>

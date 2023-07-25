@@ -6,8 +6,6 @@
 <%
 	request.setCharacterEncoding("utf-8");
 %>
-<!DOCTYPE html>
-<html>
 
 <script>
 	function fn_category() {
@@ -18,8 +16,81 @@
 			$('#suggestList').addClass('d-none');
 		}
 	}
+	
+	
+	var loopSearch = true;
+	function keywordSearch() {
+		var searchWordValue = document.getElementById('searchWord').value;
+		var value = document.frmSearch.searchWord.value;
+		
+		if (loopSearch == false) return;
+		if(searchWordValue.length > 0){
+			$.ajax({
+				type : "get",
+				async : true, //false인 경우 동기식으로 처리한다.
+				url : "${contextPath}/goods/keywordSearch.do",
+				data : {
+					keyword : value
+				},
+				success : function(data, textStatus) {
+					var jsonInfo = JSON.parse(data);
+					displayResult(jsonInfo);
+				},
+				error : function(data, textStatus) {
+					alert("에러가 발생했습니다." + data);
+				},
+				complete : function(data, textStatus) {
+					//alert("작업을완료 했습니다");
+				}
+			}); //end ajax	
+		}else{
+			hide('suggest');
+		}
+	}
+
+	function displayResult(jsonInfo) {
+		var count = jsonInfo.keyword.length;
+		var listView = document.getElementById("innerDivForSuggestList");
+		if (count > 0) {
+			var html = '';
+			for ( var i in jsonInfo.keyword) {
+				html += "<li><a class='dropdown-item small' href=\"javascript:select('"
+						+ jsonInfo.keyword[i]
+						+ "')\">"
+						+ jsonInfo.keyword[i]
+						+ "</a></li>";
+			}
+			listView.innerHTML = html;
+			show('suggest');
+		} else {
+			hide('suggest');
+		}
+	}
+
+	function select(selectedKeyword) {
+		document.frmSearch.searchWord.value = selectedKeyword;
+		loopSearch = false;
+		hide('suggest');
+	}
+
+	function show(elementId) {
+		var element = document.getElementById(elementId);
+		if (element) {
+			element.classList.remove('d-none');
+			element.classList.add('d-block');
+		}
+	}
+
+	function hide(elementId) {
+		var element = document.getElementById(elementId);
+		if (element) {
+			element.classList.remove('d-block');
+			element.classList.add('d-none');
+		}
+	}
+	
 </script>
-<body>
+
 	<div id="head_link">
 		<ul>
 			<c:choose>
@@ -57,9 +128,21 @@
 				src="${contextPath }/resources/image/webtoonfriends_logo.png">
 			</a>
 			<div id="search">
-				<input name="searchWord" class="main_input" type="text"> <i
-					class="fa-sharp fa-solid fa-magnifying-glass fa-xl"
-					style="color: #00dc64;"></i>
+				<form name="frmSearch" action="${contextPath }/goods/searchGoods.do">
+					<input name="searchWord" class="main_input" type="text" id="searchWord"
+					onkeyup="keywordSearch()"> 
+					<button type="submit">
+						<i
+							class="fa-sharp fa-solid fa-magnifying-glass fa-xl"
+							style="color: #00dc64;"></i>
+					</button>
+				</form>
+				<!-- 추천키워드  -->
+				<div id="suggest" class="d-none">
+					<ul id="suggest_list" class="keywordSearchList">
+						<div id="innerDivForSuggestList"></div>
+					</ul>
+				</div>
 			</div>
 			<a href="
 			<c:choose>
@@ -88,5 +171,3 @@
 			</a>
 		</div>
 
-</body>
-</html>
