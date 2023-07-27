@@ -27,19 +27,6 @@ public class GoodsServiceImpl implements GoodsService {
 		goodsList = goodsDAO.selectGoodsList("newgoods");
 		goodsMap.put("newgoods", goodsList);
 
-		/*
-		 * goodsList = goodsDAO.selectMenusList("������"); goodsMap.put("cate_digital",
-		 * goodsList);
-		 * 
-		 * goodsList = goodsDAO.selectMenusList("����"); goodsMap.put("cate_book",
-		 * goodsList);
-		 * 
-		 * goodsList = goodsDAO.selectMenusList("�ǰ���ɽ�ǰ"); goodsMap.put("cate_health",
-		 * goodsList);
-		 * 
-		 * goodsList = goodsDAO.selectMenusList("��Ȱ��ǰ"); goodsMap.put("cate_daily",
-		 * goodsList);
-		 */
 		return goodsMap;
 	}
 	

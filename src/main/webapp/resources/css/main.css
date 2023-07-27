@@ -155,9 +155,9 @@ header #head.active {
 /* 헤더 검색 */
 
 #suggest{
+	width:25%;
 	position: absolute;
 	top: 100px;
-	transform:translateX(10%);
 	background-color: #fff;
 	padding: 20px;
 	border: 2px solid #00dc64;
@@ -167,7 +167,6 @@ header #head.active {
 #suggest a{
 	font-size:14px;
 	color: #000;
-	font-weight: bold;
 }
 
 

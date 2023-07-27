@@ -77,14 +77,12 @@
 		var element = document.getElementById(elementId);
 		if (element) {
 			element.classList.remove('d-none');
-			element.classList.add('d-block');
 		}
 	}
 
 	function hide(elementId) {
 		var element = document.getElementById(elementId);
 		if (element) {
-			element.classList.remove('d-block');
 			element.classList.add('d-none');
 		}
 	}
@@ -130,7 +128,7 @@
 			<div id="search">
 				<form name="frmSearch" action="${contextPath }/goods/searchGoods.do">
 					<input name="searchWord" class="main_input" type="text" id="searchWord"
-					onkeyup="keywordSearch()"> 
+					onkeyup="keywordSearch()" autocomplete="off"> 
 					<button type="submit">
 						<i
 							class="fa-sharp fa-solid fa-magnifying-glass fa-xl"
