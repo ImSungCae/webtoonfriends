@@ -88,6 +88,11 @@
 					</c:otherwise>
 				</c:choose>
 			</table>
+			<div class="pages">
+			<c:forEach var="page" begin="1" end="10" step="1">
+				<a href="${contextPath}/admin/member/adminMemberMain.do?chapter=${section}&pageNum=${page}">${(section-1)*10 +page }</a>
+			</c:forEach> 
+		</div>
 		</div>
 	</form>
 </div>

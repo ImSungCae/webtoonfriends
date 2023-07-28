@@ -42,18 +42,33 @@
 	<!-- pay_order_time의 내림차순으로 정렬 -->
 	<select id="selectNewOrderList" resultMap="orderResult"
 		parameterType="java.util.HashMap">
-		select a.*, rownum as rnum from(
-		select
-		to_char(pay_order_time,'YYYY-MM-DD') as pay_order_time, order_id,
-		goods_title,order_goods_qty,
-		delivery_state, member_id,
-		receiver_hp1,receiver_name,delivery_address
-		from t_shop_order
-		where
-		to_char(pay_order_time,'yyyy-mm-dd') between #{beginDate} and
-		#{endDate}
-		order by order_id desc) a
+		select * from (
+			select a.*,rowNum as rnum from(
+				(select 
+				to_char(pay_order_time,'YYYY-MM-DD') as pay_order_time, order_id,
+				goods_title,order_goods_qty,
+				delivery_state, member_id,
+				receiver_hp1,receiver_name,delivery_address 
+				 from t_shop_order
+				where to_char(pay_order_time,'yyyy-mm-dd') between #{beginDate} and
+				#{endDate}
+				order by order_id desc)
+			) a
+		)
+		where 
+		rnum between (#{section}-1)*100+ (#{pageNum}-1)*5+1 and (#{section}-1)*100+(#{pageNum})*5
 	</select>
+<!-- 		select a.*, rownum as rnum from(
+			select
+			to_char(pay_order_time,'YYYY-MM-DD') as pay_order_time, order_id,
+			goods_title,order_goods_qty,
+			delivery_state, member_id,
+			receiver_hp1,receiver_name,delivery_address
+			from t_shop_order
+			where
+			to_char(pay_order_time,'yyyy-mm-dd') between #{beginDate} and
+			#{endDate}
+		order by order_id desc) a -->
 	
 
 	<!-- 주문수정 - 배송수정 -->

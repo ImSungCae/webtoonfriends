@@ -17,25 +17,25 @@
 	<div class="mypageBox">
 		<h5>상품</h5>
 
-		<!-- 배송중 카운트 -->
+		<!-- 상품 개수 카운트 -->
 		<span>${goodsLen }</span>
-		<!-- 배송중 카운트 -->
+		<!-- 상품 개수 카운트 -->
 
 	</div>
 	<div class="mypageBox">
 		<h5>회원</h5>
 
-		<!-- 장바구니 카운트 -->
+		<!-- 회원 수 카운트 -->
 		<span>${membersLen }</span>
-		<!-- 장바구니 카운트 -->
+		<!-- 회원 수 카운트 -->
 
 	</div>
 	<div class="mypageBox">
 		<h5>주문건수</h5>
 
-		<!-- 장바구니 카운트 -->
+		<!-- 주문건수 카운트 -->
 		<span>${ordersLen }</span>
-		<!-- 장바구니 카운트 -->
+		<!-- 주문건수 카운트 -->
 
 	</div>
 	<div class="mypageBox" id="totPrice_box">

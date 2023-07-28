@@ -45,11 +45,19 @@
 				</c:otherwise>
 			</c:choose>
 		</table>
+		
+		<div class="pages">
+			<c:forEach var="page" begin="1" end="10" step="1">
+				<a href="${contextPath}/admin/goods/adminGoodsMain.do?chapter=${section}&pageNum=${page}">${(section-1)*10 +page }</a>
+			</c:forEach> 
+		</div>
 	</div>
 </div>
 
 
+
 <script>
+
 	//버튼식 상품조회
 	//onclick할때 같이 가져오는 fixedSearchPeriod값과함께 adminOrderMain 재요청
 	//해당 값은 자바소스를 거쳐 지정된 기간에 맞는 정보만 select되어 뿌려진다.

@@ -24,18 +24,28 @@
 		<result property="fileName" column="fileName" />
 		<result property="reg_id" column="reg_id" />
 		<result property="image_id" column="image_id" />
-		<result property="fileType" column="fileType" />
+		<result property="fileType" column="fileType" />	
 	</resultMap>
 
 	<!-- 상품관리 - 상품리스트 -->
+		<!-- select a.*, rownum as rnum from
+		(select * from t_shop_goods 
+        where  to_char(goods_credate,'yyyy-mm-dd')  
+        between #{beginDate} and #{endDate}
+		order by goods_id desc) a -->  
 	<select id="selectNewGoodsList" resultMap="goodsResult"
 		parameterType="java.util.Map">
 	    <![CDATA[
-		select a.*, rownum as rnum from(select * 
-		from t_shop_goods 
-        where  to_char(goods_credate,'yyyy-mm-dd')  
-        between #{beginDate} and #{endDate}
-		order by goods_id desc) a  
+	    select * from (
+	    	select a.*,rowNum as rnum from(
+	    		(select * from t_shop_goods
+	    		where  to_char(goods_credate,'yyyy-mm-dd')  
+		        between #{beginDate} and #{endDate}
+				order by goods_id desc)
+	    	) a
+	    )
+		where 
+		rnum between (#{section}-1)*100+ (#{pageNum}-1)*10+1 and (#{section}-1)*100+(#{pageNum})*10
     	]]>
 	</select>
 

@@ -19,13 +19,15 @@
 	<select id="listMember" resultMap="memberResult"   parameterType="java.util.HashMap"  >
 	    <![CDATA[
 		select * from (
-			select rowNum as recNum,t.*
+			select rowNum as rnum,t.*
 				from(
 					select * from t_shop_member
 					where to_char(joinDate,'yyyy-mm-dd') between #{beginDate} and #{endDate}
 					order by joinDate desc
 				) t
 		)
+		where 
+		rnum between (#{section}-1)*100+ (#{pageNum}-1)*5+1 and (#{section}-1)*100+(#{pageNum})*5
 		
 		]]>	        
 	</select>

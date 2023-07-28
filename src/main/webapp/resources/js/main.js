@@ -100,3 +100,6 @@ slide.addEventListener('click', function (e) {
 
 
 
+
+
+
