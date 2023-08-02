@@ -200,7 +200,7 @@
 												</c:choose>
 												</select>
 												<!-- 배송상태 hidden input -->
-												<input type="hidden" id="delivery_state"
+												<input type="hidden" class="delivery_state"
 													name="delivery_state" value="${item.delivery_state}">
 												<!-- 배송상태 hidden input -->
 											</div>
@@ -241,12 +241,11 @@
 	//수정할 상품 index와 order_id를 가져온다.
 	function fn_modify_order_state(index, order_id) {
 		//해당 getElementsByName이 delivery_state인 input을 가져와
-		var deliveryInputs = document.getElementsByName("delivery_state");
+		var deliveryInputs = document.getElementsByClassName("delivery_state");
 		//그 값 value을 저장해 수정 수행
 		var delivery_state = deliveryInputs[index].value;
 
-		$
-				.ajax({
+		$.ajax({
 					type : "post",
 					async : false,
 					url : "${contextPath}/admin/order/modifyDeliveryState.do",

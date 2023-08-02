@@ -51,8 +51,16 @@
       ]]>
 		<foreach item="item" collection="list" open="(" separator=","
 			close=")">
+			
 			#{item.goods_id}
+			
 		</foreach>
+		and c.member_id in
+		<foreach item="item" collection="list" open="(" separator=","
+			close=")">
+		 	#{item.member_id}
+		</foreach>
+		
 		order by c.creDate desc
 	</select>
 
