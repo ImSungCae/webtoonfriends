@@ -286,7 +286,6 @@ public class AdminGoodsControllerImpl extends BaseController implements AdminGoo
 	@RequestMapping(value = "/addNewGoodsImage.do", method = { RequestMethod.POST })
 	public void addNewGoodsImage(MultipartHttpServletRequest multipartRequest, HttpServletResponse response)
 			throws Exception {
-		System.out.println("addNewGoodsImage");
 		multipartRequest.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		String imageFileName = null;

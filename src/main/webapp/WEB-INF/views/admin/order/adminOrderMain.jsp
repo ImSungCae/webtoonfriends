@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
-
 <!-- order_goods_list에 데이터가 있을때 -->
 <c:choose>
 	<c:when test='${not empty order_goods_list}'>
@@ -65,9 +64,9 @@
 				</c:when>
 				<c:otherwise>
 					<c:forEach var="item" items="${newOrderList }" varStatus="i">
-						<form name="frm_delivery_list">
-							<c:choose>
-								<c:when test="${item.order_id != pre_order_id }">
+						<c:choose>
+							<c:when test="${item.order_id != pre_order_id }">
+								<form name="frm_delivery_list">
 									<tr>
 										<td>${item.order_id }</td>
 										<td>
@@ -130,7 +129,7 @@
 												<c:choose>
 													<c:when test="${item.delivery_state=='delivery_prepared' }">
 														<select name="s_delivery_state${i.index }"
-															id="s_delivery_state${i.index }"
+															id="s_delivery_state${i.index}"
 															onchange="selectValue(this,this.value)" class="prepared">
 													</c:when>
 													<c:when
@@ -244,6 +243,9 @@
 		var deliveryInputs = document.getElementsByClassName("delivery_state");
 		//그 값 value을 저장해 수정 수행
 		var delivery_state = deliveryInputs[index].value;
+		var deliveryInput = document.getElementById('s_delivery_state'+index);
+		delivery_state = deliveryInput.value;
+		
 
 		$.ajax({
 					type : "post",
@@ -257,7 +259,7 @@
 						if (data.trim() == 'mod_success') {
 							//수정완료
 							alert("주문 정보를 수정했습니다.");
-							location.href = "${contextPath}/admin/order/adminOrderMain.do";
+							location.reload();
 						} else if (data.trim() == 'failed') {
 							alert("다시 시도해 주세요.");
 						}

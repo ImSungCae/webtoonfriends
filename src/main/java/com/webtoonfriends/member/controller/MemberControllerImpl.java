@@ -35,7 +35,6 @@ public class MemberControllerImpl extends BaseController implements MemberContro
 			HttpServletResponse response) throws Exception {
 		ModelAndView mav = new ModelAndView();
 		memberVO = memberService.login(loginMap);
-		System.out.println(loginMap.get("member_pwd"));
 		if (memberVO != null && memberVO.getMember_id() != null) {
 			HttpSession session = request.getSession();
 			session = request.getSession();
@@ -74,7 +73,6 @@ public class MemberControllerImpl extends BaseController implements MemberContro
 			throws Exception {
 		response.setContentType("text/html; charset=UTF-8");
 		request.setCharacterEncoding("utf-8");
-		System.out.println(member.getAddress());
 		String message = null;
 		ResponseEntity resEntity = null;
 		HttpHeaders responseHeaders = new HttpHeaders();

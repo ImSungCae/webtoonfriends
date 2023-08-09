@@ -32,7 +32,7 @@
 							width="75">
 							<p>${myOrderList[0].goods_title }</p>
 					</a></td>
-					<td><h5>${myOrderList[0].order_goods_qty }</h5> 개</td>
+					<td><h5>${myOrderList[0].order_goods_qty }</h5></td>
 					<td><fmt:formatNumber value="${myOrderList[0].order_goods_qty*myOrderList[0].goods_price }"/> 원</td>
 					<td rowspan="${myOrderList.size() }">3,000 원</td>
 					<td rowspan="${myOrderList.size() }"><fmt:formatNumber value="${tot_price+3000 }" pattern="#,###"/> 원</td>
@@ -47,7 +47,7 @@
 									width="75">
 									<p>${item.goods_title }</p>
 							</a></td>
-							<td><h5>${item.order_goods_qty }</h5> 개</td>
+							<td><h5>${item.order_goods_qty }</h5></td>
 							<td><fmt:formatNumber value="${item.order_goods_qty*item.goods_price }"/> 원</td>
 					</tr>
 				</c:forEach>
