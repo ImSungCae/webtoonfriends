@@ -71,8 +71,9 @@
 			<a href="javascript:fn_order_each_goods('${goods.goods_id }','${goods.goods_title }','${goods.goods_price}','${goods.goods_fileName}');">바로 구매하기</a>
 		</div>	
  	</div>
- 	
+	<input type="hidden" name="isLogOn" id="isLogOn" value="${isLogOn}"/> 	
 </div>
+
 
 <script>
 /* 수량 +,- 버튼시 수량 input value 값 변경  
@@ -124,6 +125,15 @@ function add_cart(goods_id) {
 
 //바로 주문하기 
 function fn_order_each_goods(goods_id,goods_title,goods_price,fileName){
+	
+		var _isLogOn=document.getElementById("isLogOn");
+		var isLogOn=_isLogOn.value;
+		
+		 if(isLogOn=="false" || isLogOn=='' ){
+			alert("로그인 후 주문이 가능합니다!!!");
+		} 
+	
+		
 	 	var total_price,final_total_price;
 		var order_goods_qty=document.getElementById("count");
 		var formObj=document.createElement("form");
@@ -133,11 +143,7 @@ function fn_order_each_goods(goods_id,goods_title,goods_price,fileName){
 	    var i_fileName=document.createElement("input");
 	    var i_order_goods_qty=document.createElement("input");
 	    
-		let memberName = "${memberInfo.member_name }";
-		/* console.log(memberName); */
 		 
-		if(memberName == ""){alert("로그인 후 구매하실 수 있습니다!");}/* 로그인상태가 아닌경우 안내함. */
-		else{
 		    i_goods_id.name="goods_id";
 		    i_goods_title.name="goods_title";
 		    i_goods_price.name="goods_price";
@@ -160,7 +166,6 @@ function fn_order_each_goods(goods_id,goods_title,goods_price,fileName){
 		    formObj.method="post";
 		    formObj.action="${contextPath}/order/orderEachGoods.do";
 		    formObj.submit();
-			}	
 		
 	}
 </script>

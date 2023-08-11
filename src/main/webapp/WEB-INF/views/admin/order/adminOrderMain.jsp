@@ -240,11 +240,11 @@
 	//수정할 상품 index와 order_id를 가져온다.
 	function fn_modify_order_state(index, order_id) {
 		//해당 getElementsByName이 delivery_state인 input을 가져와
-		var deliveryInputs = document.getElementsByClassName("delivery_state");
+		/* var deliveryInputs = document.getElementsByClassName("delivery_state");
 		//그 값 value을 저장해 수정 수행
-		var delivery_state = deliveryInputs[index].value;
+		var delivery_state = deliveryInputs[index].value; */
 		var deliveryInput = document.getElementById('s_delivery_state'+index);
-		delivery_state = deliveryInput.value;
+		var delivery_state = deliveryInput.value;
 		
 
 		$.ajax({
