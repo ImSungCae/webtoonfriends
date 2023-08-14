@@ -65,8 +65,7 @@
 
 <div align="center">
 	<h3>:movie_camera: 관리자 회원 관리 </h3>
-	<video src="https://github.com/ImSungCae/webtoonfriends/assets/134353202/c37e9d82-e582-490d-ae99-327b43896eae
-
+	<video src="https://github.com/ImSungCae/webtoonfriends/assets/134353202/c4035d3d-18fb-4ab8-a356-88867b7b455c
 " />
 </div>
 
