@@ -16,6 +16,6 @@
 	<img src="https://img.shields.io/badge/apachemaven-C71A36?style=flat&logo=apachemaven&logoColor=white"/>
 	<img src="https://img.shields.io/badge/eclipseide-2C2255?style=flat&logo=eclipseide&logoColor=white"/>
 	<img src="https://img.shields.io/badge/apachetomcat-F8DC75?style=flat&logo=apachetomcat&logoColor=white"/>
-	<img src="https://github.com/ImSungCae/webtoonfriends/assets/134353202/65f46e6c-7822-4d88-b0e0-28ffc3595f59")
+	<img style="width:300px; height:300px" src="https://github.com/ImSungCae/webtoonfriends/assets/134353202/65f46e6c-7822-4d88-b0e0-28ffc3595f59")
 "/>
 </div>
