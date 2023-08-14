@@ -29,3 +29,18 @@
 	<h3>:movie_camera: 로그인/회원가입</h3>
 	<video src="https://github.com/ImSungCae/webtoonfriends/assets/134353202/7b66d3c3-09d8-4de8-8790-609760821a14" />
 </div>
+
+<div align="center">
+	<h3>:movie_camera: 장바구니 담기</h3>
+	<video src="https://github.com/ImSungCae/webtoonfriends/assets/134353202/3e947cf7-ca58-4026-888a-9f82876a401b" />
+</div>
+
+<div align="center">
+	<h3>:movie_camera: 바로 구매 / 장바구니 구매</h3>
+	<video src="https://github.com/ImSungCae/webtoonfriends/assets/134353202/6fc7cf04-e5b6-4905-829a-c1a5b3c39236" />
+</div>
+
+<div align="center">
+	<h3>:movie_camera: 마이 페이지</h3>
+	<video src="https://github.com/ImSungCae/webtoonfriends/assets/134353202/6ce40620-c0f9-4b28-9fd7-610b355f5fdf" />
+</div>
