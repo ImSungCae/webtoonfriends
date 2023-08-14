@@ -20,6 +20,6 @@
 </div>
 <div align="center">
 	<h3>:video_camera: 메인페이지</h3>
-	<img src="https://github.com/ImSungCae/webtoonfriends/assets/134353202/8a7329f3-5332-4158-b7b1-ca39239a036d" />
+	<img style="width:400px;" src="https://github.com/ImSungCae/webtoonfriends/assets/134353202/8a7329f3-5332-4158-b7b1-ca39239a036d" />
 </div>
 
