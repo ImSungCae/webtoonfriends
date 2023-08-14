@@ -19,8 +19,7 @@
 	
 </div>
 <div align="center">
-	<h3>:video_camera: 메인페이지</h3>
-	<img src="https://github.com/ImSungCae/webtoonfriends/assets/134353202/8a7329f3-5332-4158-b7b1-ca39239a036d" />
-	<img src="https://github.com/ImSungCae/webtoonfriends/assets/134353202/4617946d-2671-41e1-b380-31b493960ad1" />
+	<h3>:movie_camera: 메인페이지</h3>
+	<video src="https://github.com/ImSungCae/webtoonfriends/assets/134353202/b3e980b3-cde2-4c0b-a69f-b892d6358b23" />
 </div>
 
