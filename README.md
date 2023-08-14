@@ -44,3 +44,29 @@
 	<h3>:movie_camera: 마이 페이지</h3>
 	<video src="https://github.com/ImSungCae/webtoonfriends/assets/134353202/6ce40620-c0f9-4b28-9fd7-610b355f5fdf" />
 </div>
+
+<div align="center">
+	<h3>:movie_camera: 검색 / 제품 상세</h3>
+	<video src="https://github.com/ImSungCae/webtoonfriends/assets/134353202/151f8070-9f71-4000-89bd-6638a1e9b90e
+" />
+</div>
+
+<div align="center">
+	<h3>:movie_camera: 관리자 로그인 / 상품 관리 </h3>
+	<video src="https://github.com/ImSungCae/webtoonfriends/assets/134353202/a1b7725f-c59f-4158-96a9-ef0ac5fc143f
+" />
+</div>
+
+<div align="center">
+	<h3>:movie_camera: 관리자 주문 관리 </h3>
+	<video src="https://github.com/ImSungCae/webtoonfriends/assets/134353202/1d3c3b00-d6b8-43f2-8f91-1674edb7c636
+" />
+</div>
+
+<div align="center">
+	<h3>:movie_camera: 관리자 회원 관리 </h3>
+	<video src="https://github.com/ImSungCae/webtoonfriends/assets/134353202/c37e9d82-e582-490d-ae99-327b43896eae
+
+" />
+</div>
+
