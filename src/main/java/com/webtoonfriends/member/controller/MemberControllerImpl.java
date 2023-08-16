@@ -42,7 +42,7 @@ public class MemberControllerImpl extends BaseController implements MemberContro
 			session.setAttribute("memberInfo", memberVO);
 
 			String action = (String) session.getAttribute("action");
-			if (action != null || action.equals("/order/orderEachGoods.do")) {
+			if (action != null && action.equals("/order/orderEachGoods.do")) {
 				mav.setViewName("forward:" + action);
 			} else {
 				mav.setViewName("redirect:/main/main.do");
