@@ -44,7 +44,7 @@ CREATE TABLE t_shop_goods(
 CREATE TABLE t_goods_image(
     image_id NUMBER(20) primary key,
     goods_id NUMBER(20),
-    fileName VARCHAR2(50),
+    fileName VARCHAR2(100),
     reg_id VARCHAR2(20),
     fileType VARCHAR2(40),
     credate DATE DEFAULT sysdate
